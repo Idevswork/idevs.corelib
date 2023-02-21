@@ -7,12 +7,15 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc -p ./src/tsconfig.json",
     "format": "prettier --write \"src/**/*.ts\" \"dist/**/*.js\"",
-    "lint": "tslint -p ./src/tsconfig.json"
+    "lint": "eslint -c .eslintrc --ext .ts ./src"
   },
   "keywords": [],
   "author": "Sarawut Phaekuntod",
   "license": "MIT",
-  "files": ["./dist/**/*", "./src/**/*"],
+  "files": [
+    "./dist/**/*",
+    "./src/**/*"
+  ],
   "dependencies": {
     "@serenity-is/corelib": "^6.5.1",
     "@serenity-is/sleekgrid": "^1.5.5",
@@ -24,10 +27,12 @@
     "bootstrap": "^5.2.3"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.53.0",
+    "@typescript-eslint/parser": "^5.53.0",
+    "eslint": "^8.34.0",
+    "eslint-config-prettier": "^8.6.0",
     "jsmin": "^1.0.1",
     "prettier": "^2.8.4",
-    "tslint": "^6.1.3",
-    "tslint-config-prettier": "^1.18.0",
     "typescript": "^4.9.5"
   }
 }
