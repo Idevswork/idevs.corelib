@@ -12,7 +12,7 @@
       "forceConsistentCasingInFileNames": true,
       "noImplicitAny": true,
       "sourceMap": true,
-      "module": "ES2015",
+      "module": "ES2020",
       "moduleResolution": "Node",
       "skipLibCheck": true,
       "types": [
@@ -27,10 +27,10 @@
       },
       "outDir": "../dist",
       "suppressImplicitAnyIndexErrors": true,
-      "target": "ES5",
+      "target": "ES6",
       "lib": [
-        "ES5",
-        "ES2015",
+        "ES6",
+        "ES2020",
         "DOM"
       ],
       "noEmitHelpers": false,
