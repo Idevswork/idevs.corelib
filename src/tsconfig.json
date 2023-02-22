@@ -1,42 +1,33 @@
 {
-    "compileOnSave": false,
-    "compilerOptions": {
-      "experimentalDecorators": true,
-      "declaration": true,
-      "declarationDir": "../dist",
-      "emitBOM": true,
-      "emitDeclarationOnly": false,
-      "esModuleInterop": true,
-      "inlineSources": true,
-      "isolatedModules": true,
-      "forceConsistentCasingInFileNames": true,
-      "noImplicitAny": true,
-      "sourceMap": true,
-      "module": "ES2020",
-      "moduleResolution": "Node",
-      "skipLibCheck": true,
-      "types": [
-        "jquery",
-        "jquery.validation",
-        "jqueryui",
-        "toastr"
-      ],
-      "paths": {
-        "@serenity-is/corelib/q": ["./q"],
-        "@serenity-is/corelib/slick": ["./slick"]
-      },
-      "outDir": "../dist",
-      "suppressImplicitAnyIndexErrors": true,
-      "target": "ES6",
-      "lib": [
-        "ES6",
-        "ES2020",
-        "DOM"
-      ],
-      "noEmitHelpers": false,
-      "importHelpers": false,
-      "jsx": "react"
+  "compileOnSave": false,
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "declaration": true,
+    "declarationDir": "../dist",
+    "emitBOM": true,
+    "emitDeclarationOnly": false,
+    "esModuleInterop": true,
+    "inlineSources": true,
+    "isolatedModules": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitAny": true,
+    "sourceMap": true,
+    "module": "ES2020",
+    "moduleResolution": "Node",
+    "skipLibCheck": true,
+    "types": ["jquery", "jquery.validation", "jqueryui", "toastr"],
+    "paths": {
+      "@serenity-is/corelib/q": ["./q"],
+      "@serenity-is/corelib/slick": ["./slick"]
     },
-    "include": ["**/*"],
-    "exclude": ["**/*.spec.ts"]
-  }
+    "outDir": "../dist",
+    "suppressImplicitAnyIndexErrors": true,
+    "target": "ES6",
+    "lib": ["ES6", "ES2020", "DOM"],
+    "noEmitHelpers": false,
+    "importHelpers": false,
+    "jsx": "react"
+  },
+  "include": ["**/*"],
+  "exclude": ["**/*.spec.ts"]
+}
