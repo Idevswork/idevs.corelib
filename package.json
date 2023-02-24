@@ -16,6 +16,9 @@
     "./dist/**/*",
     "./src/**/*"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "@serenity-is/corelib": "^6.5.1",
     "@serenity-is/sleekgrid": "^1.5.5",
