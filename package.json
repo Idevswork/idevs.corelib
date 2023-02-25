@@ -9,15 +9,20 @@
     "format": "prettier --ignore-path .gitignore --write \"src/**/*.+(js|ts|json)\" \"dist/**/*.+(js|ts|json)\"",
     "lint": "eslint --ignore-path .eslintignore -c .eslintrc --ext .js,.ts ./src"
   },
-  "keywords": [],
+  "keywords": ["idevs", "idevswork", "corelib", "serenity"],
   "author": "Sarawut Phaekuntod",
   "license": "MIT",
   "files": [
     "./dist/**/*",
-    "./src/**/*"
+    "./src/**/*",
+    "./css/**/*"
   ],
   "publishConfig": {
     "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/klomkling/idevs.corelib"
   },
   "dependencies": {
     "@serenity-is/corelib": "^6.5.1",

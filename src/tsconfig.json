@@ -16,10 +16,6 @@
     "moduleResolution": "Node",
     "skipLibCheck": true,
     "types": ["jquery", "jquery.validation", "jqueryui", "toastr"],
-    "paths": {
-      "@serenity-is/corelib/q": ["./q"],
-      "@serenity-is/corelib/slick": ["./slick"]
-    },
     "outDir": "../dist",
     "suppressImplicitAnyIndexErrors": true,
     "target": "ES6",
