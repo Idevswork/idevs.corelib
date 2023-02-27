@@ -6,25 +6,46 @@ export type Formatter = {
   format(ctx: FormatterContext): string
 }
 
-@Decorators.registerFormatter('Idevs.ZeroToBlankFormatter')
-export class ZeroToBlankFormatter implements Formatter {
-  static format(src: string): string {
-    if (!src) {
-      return ''
-    }
+@Decorators.registerFormatter('Idevs.ZeroDisplayFormatter')
+export class ZeroDisplayFormatter implements Formatter {
+  constructor() {
+    this.displayValue = ''
+  }
 
-    const val = parseFloat(src.replace(',', ''))
-    if (val == 0) {
-      return ''
+  @Decorators.option()
+  public displayValue: string
+
+  format(ctx: FormatterContext): string {
+    const src = ctx.value as string
+
+    const value = parseFloat(String(src || '0').replace(',', ''))
+    if (value == 0) {
+      return htmlEncode(this.displayValue)
     }
 
     return htmlEncode(src)
   }
-
-  format(ctx: FormatterContext): string {
-    return ZeroToBlankFormatter.format(ctx.value as string)
-  }
 }
+
+// @Decorators.registerFormatter('Idevs.ZeroToBlankFormatter')
+// export class ZeroToBlankFormatter implements Formatter {
+//   static format(src: string): string {
+//     if (!src) {
+//       return ''
+//     }
+
+//     const val = parseFloat(String(src).replace(',', ''))
+//     if (val == 0) {
+//       return ''
+//     }
+
+//     return htmlEncode(src)
+//   }
+
+//   format(ctx: FormatterContext): string {
+//     return ZeroToBlankFormatter.format(ctx.value as string)
+//   }
+// }
 
 @Decorators.registerFormatter('Idevs.CheckboxFormatter')
 export class CheckboxFormatter implements Formatter {
