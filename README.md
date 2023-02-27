@@ -29,6 +29,10 @@ After install this module you have to update file tsconfig.json with the followi
       "@idevs/*": [ "node_modules/@idevs/*/dist/index" ]
     ],
     --- ommited ---
+    "include": [
+      --- ommited ---
+      "./node_modules/@idevs/corelib/src/**/*"
+    ],
   }
 }
 ```
