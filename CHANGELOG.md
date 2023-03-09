@@ -1,10 +1,20 @@
 # Changelog
 
+## 0.0.9 (2023-03-10)
+
+### Changes
+
+- Include css into CheckboxButtonEditor directly instead of using external css file
+
+
+
 ## 0.0.8 (2023-03-09)
 
 ### Added
 
 - CheckboxButtonEditor
+
+
 
 ## 0.0.7 (2023-03-04)
 

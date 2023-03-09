@@ -56,6 +56,8 @@ export class CheckboxButtonEditor extends Widget<CheckboxButtonEditorOptions> im
         this.addCheckbox(x.toString(), coalesce(tryGetText('Enums.' + enumKey + '.' + name), name))
       }
     }
+
+    this.element.addClass("d-flex flex-wrap");
   }
 
   protected addCheckbox(value: string, text: string) {
@@ -88,20 +90,20 @@ export class CheckboxButtonEditor extends Widget<CheckboxButtonEditorOptions> im
       if (!isEmptyOrNull(value)) values = value.split(',').map(p => Number(p))
       const inputs = this.element.find('input')
       inputs.each((i, e) => {
-        ;(e as HTMLInputElement).checked = false
+        ; (e as HTMLInputElement).checked = false
       })
 
       if (isArray(values)) {
         values.forEach(v => {
           const checks = inputs.filter('[value=' + v + ']')
           if (checks.length > 0) {
-            ;(checks[0] as HTMLInputElement).checked = true
+            ; (checks[0] as HTMLInputElement).checked = true
           }
         })
       } else {
         const checks = inputs.filter('[value=' + values + ']')
         if (checks.length > 0) {
-          ;(checks[0] as HTMLInputElement).checked = true
+          ; (checks[0] as HTMLInputElement).checked = true
         }
       }
     }
