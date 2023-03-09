@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.0.10 (2023-03-10)
+
+### Fixed
+
+- Forgot to export CheckboxButtonEditor
+
+
+
 ## 0.0.9 (2023-03-10)
 
 ### Changes
