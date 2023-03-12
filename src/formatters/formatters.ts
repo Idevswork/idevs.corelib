@@ -1,6 +1,6 @@
 import { Decorators } from '@serenity-is/corelib'
 import { FormatterContext } from '@serenity-is/sleekgrid'
-import { htmlEncode } from '@serenity-is/corelib/q'
+import { getLookup, htmlEncode, isEmptyOrNull } from '@serenity-is/corelib/q'
 
 export type Formatter = {
   format(ctx: FormatterContext): string
@@ -61,5 +61,42 @@ export class CheckboxFormatter implements Formatter {
     } else {
       return htmlEncode(src)
     }
+  }
+}
+
+@Decorators.registerFormatter('Idevs.LookupFormatter')
+export class LookupFormatter implements Formatter {
+  items: unknown[]
+  idField: string
+  textField: string
+
+  constructor() {
+    if (!isEmptyOrNull(this.lookupKey)) {
+      const lookup = getLookup(this.lookupKey)
+      this.items = lookup.items
+      this.idField = lookup.idField
+      this.textField = lookup.textField
+    }
+  }
+
+  @Decorators.option()
+  public lookupKey: string
+
+  format(ctx: FormatterContext): string {
+    const src = ctx.value as string
+    if (!src) return ''
+
+    const idList = Array.from(src).filter(i => i != ',')
+
+    return idList
+      .map(x => {
+        if (!this.lookupKey) return x
+
+        const g = this.items.find(i => i[this.idField] == x)
+        if (!g) return x
+
+        return htmlEncode(g[this.textField])
+      })
+      .join(', ')
   }
 }

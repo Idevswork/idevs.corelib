@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.0.11 (2023-03-13)
+
+### Added
+
+- LookupFormatter to display lookup values
+
+
+
 ## 0.0.10 (2023-03-10)
 
 ### Fixed
