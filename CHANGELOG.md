@@ -6,6 +6,16 @@
 
 - Fixed LookupFormatter
 
+## 0.0.13 (2023-03-18)
+
+### Added
+
+- Add idevsEditors.load and idevsFormatters.load to force load scripts 
+
+
+
+## 0.0.12
+
 
 
 ## 0.0.11 (2023-03-13)

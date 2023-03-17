@@ -91,3 +91,8 @@ export class LookupFormatter implements Formatter {
       .join(', ')
   }
 }
+
+export class idevsFormatters {
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  public static load() {}
+}

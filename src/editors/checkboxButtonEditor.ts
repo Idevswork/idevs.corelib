@@ -127,3 +127,8 @@ export class CheckboxButtonEditor extends Widget<CheckboxButtonEditorOptions> im
     }
   }
 }
+
+export class idevsEditors {
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  public static load() {}
+}
