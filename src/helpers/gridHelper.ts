@@ -50,7 +50,7 @@ export class GridHelper {
   public getButtons(buttons: ToolButton[], ...removeButtons: string[]): ToolButton[] {
     for (const btn of removeButtons) {
       const id = indexOf(buttons, x => x.cssClass == btn)
-      if (id) {
+      if (id >= 0) {
         buttons.splice(id, 1)
       }
     }

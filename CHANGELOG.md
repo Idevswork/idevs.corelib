@@ -6,6 +6,14 @@
 
 - Fixed LookupFormatter
 
+## 0.0.14 (2023-03-18)
+
+### Fixed
+
+- Fixed mistake for GridHelper
+
+
+
 ## 0.0.13 (2023-03-18)
 
 ### Added
