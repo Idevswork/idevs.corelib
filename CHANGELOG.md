@@ -1,10 +1,13 @@
 # Changelog
 
-## 0.0.12 (2023-03-14)
+## 0.0.15 (2023-03-20)
 
-### Fixed
+## Added
 
-- Fixed LookupFormatter
+- addDateQuickFilterProxy
+- updateDateQuickFilterProxyValue
+
+
 
 ## 0.0.14 (2023-03-18)
 
@@ -22,7 +25,11 @@
 
 
 
-## 0.0.12
+## 0.0.12 (2023-03-14)
+
+### Fixed
+
+- Fixed LookupFormatter
 
 
 

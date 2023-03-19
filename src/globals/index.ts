@@ -225,6 +225,47 @@ export function doProxyInput(name: string): HTMLInputElement {
   return cloneInput
 }
 
+/**
+ * addDateQuickFilterProxy
+ *
+ * @export
+ * @param {string} name
+ * @param {number} width
+ */
+export function addDateQuickFilterProxy(name: string, width: number): void {
+  const input: HTMLInputElement = document.querySelector(`input[name="${name}"]`)
+  const cloneInput: HTMLInputElement = input.cloneNode(true) as HTMLInputElement
+  cloneInput.setAttribute('name', `${name}-2`)
+  cloneInput.setAttribute('id', `${input.getAttribute('id')}-2`)
+  cloneInput.setAttribute('readonly', 'readonly')
+  cloneInput.classList.remove('customValidate')
+  cloneInput.classList.remove('s-DateEditor')
+  cloneInput.classList.remove('s-Serenity-DateEditor')
+  cloneInput.classList.remove('dateQ')
+  cloneInput.classList.remove('hasDatepicker')
+  cloneInput.style.width = `${width}px`
+
+  input.parentNode.insertBefore(cloneInput, input.nextSibling)
+  input.classList.add('d-none')
+}
+
+/**
+ * updateDateQuickFilterProxyValue
+ *
+ * @export
+ * @param {string} name of source element
+ * @param {string} locale
+ */
+export function updateDateQuickFilterProxyValue(name: string, locale: string): void {
+  const input = document.querySelector(`#${name}`) as HTMLInputElement
+  const target = document.querySelector(`#${name}-2`) as HTMLInputElement
+  target.value = new Intl.DateTimeFormat(locale, {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).format(input.valueAsDate)
+}
+
 export type IdevsExportOptions = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   grid: DataGrid<any, any>
