@@ -263,7 +263,7 @@ export function updateDateQuickFilterProxyValue(name: string, locale: string): v
     year: 'numeric',
     month: '2-digit',
     day: '2-digit',
-  }).format(input.valueAsDate)
+  }).format(input.valueAsDate || new Date(input.value))
 }
 
 export type IdevsExportOptions = {
