@@ -33,14 +33,12 @@ export function doExportPdf(options: IdevsExportOptions): void {
   postToService({ service: options.service, request: request, target: '_blank' })
 }
 
-export class PdfExportHelper {
-  createToolButton(options: PdfExportOptions) {
-    return {
-      hint: options.hint || 'PDF',
-      title: options.title || '',
-      cssClass: 'export-pdf-button',
-      onClick: doExportPdf,
-      separator: options.separator,
-    }
+export function createPdfToolButton(options: PdfExportOptions) {
+  return {
+    hint: options.hint || 'PDF',
+    title: options.title || '',
+    cssClass: 'export-pdf-button',
+    onClick: doExportPdf(options),
+    separator: options.separator,
   }
 }

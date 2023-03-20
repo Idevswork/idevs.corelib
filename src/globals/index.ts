@@ -272,6 +272,8 @@ export type IdevsExportOptions = {
   service: string
   viewName: string
   onViewSubmit: () => boolean
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  criteria?: any
 }
 
 export type IdevsExportRequest = ListRequest & {

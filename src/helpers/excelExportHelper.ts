@@ -34,14 +34,12 @@ export function onExportExcel(options: IdevsExportOptions): void {
   postToService({ service: options.service, request: request, target: '_blank' })
 }
 
-export class ExcelExportHelper {
-  createToolButton(options: ExcelExportOptions): ToolButton {
-    return {
-      hint: options.hint || 'Excel',
-      title: options.title || '',
-      cssClass: 'export-xlsx-button',
-      onClick: onExportExcel,
-      separator: options.separator,
-    }
+export function createExcelToolButton(options: ExcelExportOptions): ToolButton {
+  return {
+    hint: options.hint || 'Excel',
+    title: options.title || '',
+    cssClass: 'export-xlsx-button',
+    onClick: onExportExcel(options),
+    separator: options.separator,
   }
 }

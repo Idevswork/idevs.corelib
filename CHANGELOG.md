@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.0.17 (2023-03-21)
+
+### Fixed
+
+- ExcelExportHelper.createToolButton => createExcelToolButton
+- PdfExportHelper.createToolButton => createPdfToolButton
+
+
+
 ## 0.0.16 (2023-03-20)
 
 ### Fixed
