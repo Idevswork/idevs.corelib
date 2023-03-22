@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.0.23 (2023-03-22)
+
+### Fixed
+
+- remove onViewSubmit from excelExportHelper and pdfExportHelper
+
+
+
 ## 0.0.22 (2023-03-22)
 
 ### Fixed
