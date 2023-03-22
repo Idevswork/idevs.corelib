@@ -2,10 +2,6 @@ import { deepClone, postToService } from '@serenity-is/corelib/q'
 import { IdevsExportOptions, IdevsExportRequest } from '../globals'
 
 export function doExportPdf(options: IdevsExportOptions): void {
-  if (!options.onViewSubmit) {
-    return
-  }
-
   const grid = options.grid
   const request = deepClone(grid.getView().params) as IdevsExportRequest
   request.Take = 0

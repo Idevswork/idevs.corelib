@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.0.27 (2023-03-22)
+
+## Fixed
+
+- Finally remove onViewSubmit and check within onClick event
+
+
+
 ## 0.0.26 (2023-03-22)
 
 ## Fixed
