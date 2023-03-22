@@ -1,4 +1,4 @@
-import { DataGrid, ListRequest } from '@serenity-is/corelib'
+import { DataGrid, ListRequest, ToolButton } from '@serenity-is/corelib'
 import { Modal } from 'bootstrap'
 
 declare global {
@@ -284,14 +284,16 @@ export type ExportOptions = IdevsExportOptions & {
   hint?: string
   separator?: boolean
   exportType: 'PDF' | 'XLSX'
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  onClick?: (e: any) => void
 }
 
-export function createExportToolButton(options: ExportOptions) {
+export function createExportToolButton(options: ExportOptions): ToolButton {
   return {
     hint: options.hint || options.exportType,
     title: options.title || '',
     cssClass: `export-${options.exportType.toLowerCase()}-button`,
-    onClick: () => Function,
+    onClick: () => options.onClick,
     separator: options.separator,
   }
 }
