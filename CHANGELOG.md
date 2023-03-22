@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.0.28 (2023-03-23)
+
+### Changes
+
+- Add more property to IdevsExportRequest
+
+
+
 ## 0.0.27 (2023-03-22)
 
 ## Fixed

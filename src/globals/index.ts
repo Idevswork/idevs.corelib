@@ -268,6 +268,10 @@ export function updateDateQuickFilterProxyValue(name: string, locale: string): v
 
 export type IdevsExportRequest = ListRequest & {
   viewName: string
+  CompanyName?: string
+  ReportName?: string
+  SelectionRange?: string
+  Logo?: string
 }
 
 export type IdevsExportOptions = IdevsExportRequest & {
