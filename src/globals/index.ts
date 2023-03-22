@@ -266,18 +266,34 @@ export function updateDateQuickFilterProxyValue(name: string, locale: string): v
   }).format(input.valueAsDate || new Date(input.value))
 }
 
-export type IdevsExportOptions = {
+export type IdevsExportRequest = ListRequest & {
+  viewName: string
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  filters?: any
+}
+
+export type IdevsExportOptions = IdevsExportRequest & {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   grid: DataGrid<any, any>
   service: string
-  viewName: string
   onViewSubmit: () => boolean
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  criteria?: any
 }
 
-export type IdevsExportRequest = ListRequest & {
-  viewName: string
+export type ExportOptions = IdevsExportOptions & {
+  title?: string
+  hint?: string
+  separator?: boolean
+  exportType: 'PDF' | 'XLSX'
+}
+
+export function createExportToolButton(options: ExportOptions) {
+  return {
+    hint: options.hint || options.exportType,
+    title: options.title || '',
+    cssClass: `export-${options.exportType.toLowerCase()}-button`,
+    onClick: () => Function,
+    separator: options.separator,
+  }
 }
 
 export class globals {

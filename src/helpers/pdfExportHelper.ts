@@ -1,12 +1,6 @@
 import { deepClone, postToService } from '@serenity-is/corelib/q'
 import { IdevsExportOptions, IdevsExportRequest } from '../globals'
 
-export type PdfExportOptions = IdevsExportOptions & {
-  title?: string
-  hint?: string
-  separator?: boolean
-}
-
 export function doExportPdf(options: IdevsExportOptions): void {
   if (!options.onViewSubmit()) {
     return
@@ -31,14 +25,4 @@ export function doExportPdf(options: IdevsExportOptions): void {
   request.viewName = options.viewName
 
   postToService({ service: options.service, request: request, target: '_blank' })
-}
-
-export function createPdfToolButton(options: PdfExportOptions) {
-  return {
-    hint: options.hint || 'PDF',
-    title: options.title || '',
-    cssClass: 'export-pdf-button',
-    onClick: doExportPdf(options),
-    separator: options.separator,
-  }
 }
