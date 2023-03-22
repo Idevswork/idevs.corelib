@@ -293,7 +293,7 @@ export function createExportToolButton(options: ExportOptions): ToolButton {
     hint: options.hint || options.exportType,
     title: options.title || '',
     cssClass: `export-${options.exportType.toLowerCase()}-button`,
-    onClick: () => options.onClick,
+    onClick: options.onClick,
     separator: options.separator,
   }
 }
