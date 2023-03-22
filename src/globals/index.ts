@@ -284,6 +284,7 @@ export type ExportOptions = IdevsExportOptions & {
   exportType: 'PDF' | 'XLSX'
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onClick?: (e: any) => void
+  onViewSubmit: boolean
 }
 
 export function createExportToolButton(options: ExportOptions): ToolButton {
