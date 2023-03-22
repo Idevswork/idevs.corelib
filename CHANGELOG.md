@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.0.26 (2023-03-22)
+
+## Fixed
+
+- Forgot to build
+
+
+
 ## 0.0.25 (2023-03-22)
 
 ### Fixed
