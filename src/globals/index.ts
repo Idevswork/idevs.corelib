@@ -268,14 +268,13 @@ export function updateDateQuickFilterProxyValue(name: string, locale: string): v
 
 export type IdevsExportRequest = ListRequest & {
   viewName: string
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  filters?: any
 }
 
 export type IdevsExportOptions = IdevsExportRequest & {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   grid: DataGrid<any, any>
   service: string
+  onViewSubmit: boolean
 }
 
 export type ExportOptions = IdevsExportOptions & {

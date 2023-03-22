@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.0.24 (2023-03-22)
+
+### Changes
+
+- bring back onViewSubmit
+
+
+
 ## 0.0.23 (2023-03-22)
 
 ### Fixed
