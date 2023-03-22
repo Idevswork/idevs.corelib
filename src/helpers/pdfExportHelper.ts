@@ -2,7 +2,7 @@ import { deepClone, postToService } from '@serenity-is/corelib/q'
 import { IdevsExportOptions, IdevsExportRequest } from '../globals'
 
 export function doExportPdf(options: IdevsExportOptions): void {
-  if (!options.onViewSubmit()) {
+  if (!options.onViewSubmit) {
     return
   }
 
