@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.0.29 (2023-03-23)
+
+### Changes
+
+- Rename new properties add from v0.0.28
+
+
+
 ## 0.0.28 (2023-03-23)
 
 ### Changes
