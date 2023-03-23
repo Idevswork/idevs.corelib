@@ -9,6 +9,18 @@
     font-size: 11px;
   }
 
+  .d-inline {
+    display: inline-block;
+  }
+
+  .position-relative {
+    position: relative;
+  }
+
+  .position-absolute {
+    position: absolute;
+  }
+
   .text-center {
     text-align: center;
   }
@@ -29,12 +41,28 @@
     border-top: 2px double black;
   }
 
+  .border-left {
+    border-left: 1px solid black;
+  }
+
+  .border-left-double {
+    border-left: 2px double black;
+  }
+
   .border-bottom {
     border-bottom: 1px solid black;
   }
 
   .border-bottom-double {
     border-bottom: 2px double black;
+  }
+
+  .border-right {
+    border-right: 1px solid black;
+  }
+
+  .border-right-double {
+    border-right: 2px double black;
   }
 
   .fs-1 {
