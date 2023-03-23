@@ -266,6 +266,12 @@ export function updateDateQuickFilterProxyValue(name: string, locale: string): v
   }).format(input.valueAsDate || new Date(input.value))
 }
 
+export function toSqlDateString(date: Date): string {
+  const offset = date.getTimezoneOffset()
+  date = new Date(date.getTime() - offset * 60 * 1000)
+  return date.toISOString().split('T')[0]
+}
+
 export type IdevsExportRequest = ListRequest & {
   viewName: string
   companyName?: string

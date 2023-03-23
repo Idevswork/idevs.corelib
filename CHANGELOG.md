@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.0.31 (2023-03-24)
+
+### Added
+
+- add function toSqlDateString to convert date to string in sql format yyyy-MM-dd
+
+
+
 ## 0.0.30 (2023-03-23)
 
 ### Added
