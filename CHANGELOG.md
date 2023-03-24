@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.0.32 (2023-03-24)
+
+### Updates
+
+- Rename onExportExcel to doExportExcel
+- Change IdevsExportRequest property viewName to nullable string type
+
+
+
 ## 0.0.31 (2023-03-24)
 
 ### Added

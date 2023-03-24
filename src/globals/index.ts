@@ -273,7 +273,7 @@ export function toSqlDateString(date: Date): string {
 }
 
 export type IdevsExportRequest = ListRequest & {
-  viewName: string
+  viewName?: string
   companyName?: string
   reportName?: string
   selectionRange?: string
