@@ -5,6 +5,7 @@ declare global {
   // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
   interface Number {
     toDecimal(precision?: number): string
+    toTimeString(): string
   }
 
   // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
@@ -12,6 +13,12 @@ declare global {
     truncate(maxLength?: number): string
     toNumber(): number
     toMethodRound(method?: number): number
+  }
+
+  // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
+  interface Date {
+    toSqlDate(): string
+    toNumber(): number
   }
 
   type IModalOptions = {
@@ -22,6 +29,26 @@ declare global {
     event: string
     callback: (e: Event) => Promise<unknown>
   }
+}
+
+Date.prototype.toSqlDate = function (): string {
+  const date = this.valueOf()
+  return new Date(date.getTime() - date.getTimezoneOffsets() * 60000).toISOString()
+}
+
+Date.prototype.toNumber = function (): number {
+  const date = this.valueOf()
+  const hours = date.getHours()
+  const minutes = date.getMinutes()
+  const seconds = date.getSeconds()
+  return hours * 60 + minutes + seconds / 60
+}
+
+Number.prototype.toTimeString = function (): string {
+  const value = this.valueOf()
+  const hours = `0${Math.floor(value / 60)}`.slice(-2)
+  const minutes = `0${value % 60}`.slice(-2)
+  return `${hours}:${minutes}`
 }
 
 Number.prototype.toDecimal = function (precision?: number): string {
