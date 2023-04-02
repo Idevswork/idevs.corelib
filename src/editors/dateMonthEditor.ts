@@ -30,16 +30,7 @@ export class DateMonthEditor extends SelectEditor {
       this.months.push(new Date(2000, i, 1).toLocaleDateString(locale, options))
     }
 
-    if (!(opt.descending ?? false)) {
-      return this.months
-    }
-
-    const months: string[] = []
-    for (let i1 = 11; i1 >= 0; i1--) {
-      months.push(new Date(2000, i1, 1).toLocaleDateString(locale, options))
-    }
-
-    return months
+    return this.months
   }
 }
 
@@ -47,5 +38,4 @@ export class DateMonthEditor extends SelectEditor {
 export interface DateMonthEditorOptions extends SelectEditorOptions {
   display?: '2-digit' | 'short' | 'long'
   locale?: 'en' | 'th'
-  descending?: boolean
 }
