@@ -1,8 +1,8 @@
 import { Decorators, SelectEditor, SelectEditorOptions } from '@serenity-is/corelib'
 
-@Decorators.registerEditor('Serenity.DateMonthEditor')
+@Decorators.registerEditor('DateMonthEditor')
 export class DateMonthEditor extends SelectEditor {
-  private months: string[] = []
+  private months: string[]
 
   constructor(hidden: JQuery, opt: DateMonthEditorOptions) {
     super(hidden, opt)
@@ -21,6 +21,7 @@ export class DateMonthEditor extends SelectEditor {
       return opt.items
     }
 
+    this.months = []
     const locale = opt.locale ?? 'en'
     const options = { month: opt.display ?? '2-digit' }
 

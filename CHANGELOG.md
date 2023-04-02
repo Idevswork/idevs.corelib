@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.0.36 (2023-04-02)
+
+### Fixed
+
+- Fixed error DateMonthEditor
+
+
+
 ## 0.0.35 (2023-04-02)
 
 ### Fixed
