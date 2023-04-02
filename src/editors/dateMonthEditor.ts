@@ -26,16 +26,16 @@ export class DateMonthEditor extends SelectEditor {
     const locale = opt.locale ?? 'en'
     const options = { month: opt.display ?? '2-digit' }
 
-    for (let i = 11; i >= 0; i--) {
+    for (let i = 0; i <= 11; i++) {
       this.months.push(new Date(2000, i, 1).toLocaleDateString(locale, options))
     }
 
-    if (opt.descending) {
+    if (!(opt.descending ?? false)) {
       return this.months
     }
 
     const months: string[] = []
-    for (let i1 = 0; i1 <= 11; i1++) {
+    for (let i1 = 11; i1 >= 0; i1--) {
       months.push(new Date(2000, i1, 1).toLocaleDateString(locale, options))
     }
 
