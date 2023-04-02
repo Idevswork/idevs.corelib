@@ -1,4 +1,5 @@
 import { Decorators, SelectEditor, SelectEditorOptions } from '@serenity-is/corelib'
+import { indexOf } from '@serenity-is/corelib/q'
 
 @Decorators.registerEditor('DateMonthEditor')
 export class DateMonthEditor extends SelectEditor {
@@ -10,8 +11,8 @@ export class DateMonthEditor extends SelectEditor {
     this.updateItems()
   }
 
-  getItemsList() {
-    return this.months
+  get valueAsMonth() {
+    return indexOf(this.months, x => x == this.value)
   }
 
   getItems() {
