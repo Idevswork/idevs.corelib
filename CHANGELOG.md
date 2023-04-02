@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.0.34 (2023-04-02)
+
+### Added
+
+- Add DateMonthEditor
+
+
+
 ## 0.0.33 (2023-03-30)
 
 ### Added
