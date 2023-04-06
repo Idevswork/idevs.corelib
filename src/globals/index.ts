@@ -33,7 +33,7 @@ declare global {
 
 Date.prototype.toSqlDate = function (): string {
   const date = this.valueOf()
-  return new Date(date.getTime() - date.getTimezoneOffsets() * 60000).toISOString()
+  return new Date(date.getTime() - date.getTimezoneOffset() * 60000).toISOString()
 }
 
 Date.prototype.toNumber = function (): number {
@@ -286,11 +286,11 @@ export function addDateQuickFilterProxy(name: string, width: number): void {
 export function updateDateQuickFilterProxyValue(name: string, locale: string): void {
   const input = document.querySelector(`#${name}`) as HTMLInputElement
   const target = document.querySelector(`#${name}-2`) as HTMLInputElement
-  target.value = new Intl.DateTimeFormat(locale, {
+  target.value = (input.valueAsDate || new Date(input.value)).toLocaleString(locale, {
     year: 'numeric',
     month: '2-digit',
     day: '2-digit',
-  }).format(input.valueAsDate || new Date(input.value))
+  })
 }
 
 export function toSqlDateString(date: Date): string {

@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.0.41 (2023-04-06)
+
+## Fixed
+
+- Fixed toSqlDate
+- Fixed updateDateQuickFilterProxyValue
+
+
+
 ## 0.0.40 (2023-04-06)
 
 ### Changes
