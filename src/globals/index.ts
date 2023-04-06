@@ -283,10 +283,9 @@ export function addDateQuickFilterProxy(name: string, width: number): void {
  * @param {string} name of source element
  * @param {string} locale
  */
-export function updateDateQuickFilterProxyValue(name: string, locale: string): void {
-  const input = document.querySelector(`#${name}`) as HTMLInputElement
+export function updateDateQuickFilterProxyValue(name: string, dateValue: string, locale: string): void {
   const target = document.querySelector(`#${name}-2`) as HTMLInputElement
-  target.value = (input.valueAsDate || new Date(input.value)).toLocaleString(locale, {
+  target.value = new Date(dateValue).toLocaleString(locale, {
     year: 'numeric',
     month: '2-digit',
     day: '2-digit',

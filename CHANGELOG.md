@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.0.42 (2023-04-06)
+
+### Fixed
+
+- Fixed updateDateQuickFilterProxyValue
+
+
+
 ## 0.0.41 (2023-04-06)
 
 ## Fixed
