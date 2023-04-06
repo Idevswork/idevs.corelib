@@ -2,7 +2,7 @@
 
 import { coalesce, first, isEmptyOrNull, tryFirst } from '@serenity-is/corelib/q'
 
-export type ToolDropdownButtonOptions = {
+export type DropdownToolButtonOptions = {
   title?: string
   cssClass?: string
   icon?: string
@@ -11,7 +11,7 @@ export type ToolDropdownButtonOptions = {
   isDropUp?: boolean
 }
 
-export type ToolDropdownButtonItem = {
+export type DropdownToolButtonItem = {
   key: string
   title?: string
   hint?: string
@@ -34,13 +34,13 @@ export type ToolDropdownSideButtonItem = {
   disabled?: boolean
 }
 
-export class ToolDropdownButton {
+export class DropdownToolButton {
   public element: JQuery = null
   private isDisabled = false
   private itemDisablingState: { key: string; disabled: boolean }[] = []
-  private options: ToolDropdownButtonOptions
+  private options: DropdownToolButtonOptions
 
-  public constructor(container: JQuery, buttons: ToolDropdownButtonItem[], opt?: ToolDropdownButtonOptions) {
+  public constructor(container: JQuery, buttons: DropdownToolButtonItem[], opt?: DropdownToolButtonOptions) {
     this.options = opt || {}
     this.isDisabled = this.options.disabled || false
     this.element = this.buildBaseDropdown()
@@ -101,7 +101,7 @@ export class ToolDropdownButton {
     return $(dropdownTemplate)
   }
 
-  public addDropdownItems(buttons: ToolDropdownButtonItem[]) {
+  public addDropdownItems(buttons: DropdownToolButtonItem[]) {
     if (buttons && buttons.length > 0) {
       buttons.forEach(button => {
         this.addDropdownItem(button)
@@ -109,7 +109,7 @@ export class ToolDropdownButton {
     }
   }
 
-  public addDropdownItem(button: ToolDropdownButtonItem, idx?: number) {
+  public addDropdownItem(button: DropdownToolButtonItem, idx?: number) {
     if (!isEmptyOrNull(button.key)) {
       if (this.itemDisablingState.map(x => x.key).indexOf(button.key) > -1) {
         alert(`Dropdown has existed key: ${button.key}`)

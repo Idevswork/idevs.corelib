@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.0.40 (2023-04-06)
+
+### Changes
+
+- Rename ToolDropdownButton to DropdownToolButton
+- Add ToggleToolButton
+
+
+
 ## 0.0.39 (2023-04-02)
 
 ### Added
