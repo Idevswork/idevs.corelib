@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.0.44 (2023-04-15)
+
+### Fixed
+
+- Fixed pdfExportHelper and excelExportHelper
+- rename toLocaleString to convertToLocaleString
+
+
+
 ## 0.0.43 (2023-04-14)
 
 ### Updates

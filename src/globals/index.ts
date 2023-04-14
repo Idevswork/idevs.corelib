@@ -17,7 +17,7 @@ declare global {
 
   // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
   interface Date {
-    toDateString(locale?: string): string
+    convertToDateString(locale?: string): string
     toSqlDate(): string
     toNumber(): number
   }
@@ -32,10 +32,8 @@ declare global {
   }
 }
 
-Date.prototype.toDateString = function (locale?: string): string {
-  const date = this.valueOf()
-  const l = locale ?? 'en-GB'
-  return date.toLocaleString(l, {
+Date.prototype.convertToDateString = function (locale?: string): string {
+  return this.valueOf().toLocaleString(locale ?? 'en-GB', {
     year: 'numeric',
     month: '2-digit',
     day: '2-digit',
@@ -214,11 +212,11 @@ export function neededTarget(el: HTMLElement, target: string): HTMLElement {
 }
 
 export function toDateString(date: Date): string {
-  return new Intl.DateTimeFormat('en-GB', {
+  return date.toLocaleString('en-GB', {
     year: 'numeric',
     month: '2-digit',
     day: '2-digit',
-  }).format(date)
+  })
 }
 
 export function GetModal(name: string, options?: IModalOptions): Modal {
@@ -296,7 +294,7 @@ export function addDateQuickFilterProxy(name: string, width: number): void {
  */
 export function updateDateQuickFilterProxyValue(name: string, dateValue: string, locale: string): void {
   const target = document.querySelector(`#${name}-2`) as HTMLInputElement
-  target.value = new Date(dateValue).toDateString(locale)
+  target.value = new Date(dateValue).convertToDateString(locale)
 }
 
 export function toSqlDateString(date: Date): string {

@@ -18,6 +18,10 @@ export function doExportExcel(options: IdevsExportOptions): void {
   }
   request.ExportColumns = request.ExportColumns.filter(column => !!column)
   request.viewName = options.viewName
+  request.companyName = options.companyName
+  request.reportName = options.reportName
+  request.selectionRange = options.selectionRange
+  request.logo = options.logo
 
   postToService({ service: options.service, request: request, target: '_blank' })
 }
