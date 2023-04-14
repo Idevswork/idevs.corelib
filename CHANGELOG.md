@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.0.45 (2023-04-15)
+
+### Updates
+
+- Remove convertToDateString
+- Add dateStrignOption() to get default Intl.DateTimeFormatOptions
+
+
+
 ## 0.0.44 (2023-04-15)
 
 ### Fixed
