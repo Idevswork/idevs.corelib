@@ -76,7 +76,8 @@ export class LookupFormatter implements Formatter {
     if (!this.lookupKey) return src
 
     const lookup = getLookup(this.lookupKey)
-    const items = lookup.items
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const items = lookup.items as Array<{ [key: string]: any }>
     const idField = lookup.idField
     const textField = lookup.textField
     const idList = src.split(',')

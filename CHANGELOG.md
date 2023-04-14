@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.0.43 (2023-04-14)
+
+### Updates
+
+- Update typescript to v.5.0.4 and related packages to latest version
+- Update globals.ts
+
+
+
 ## 0.0.42 (2023-04-06)
 
 ### Fixed

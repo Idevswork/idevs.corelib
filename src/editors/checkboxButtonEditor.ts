@@ -33,7 +33,7 @@ export class CheckboxButtonEditor extends Widget<CheckboxButtonEditorOptions> im
 
     if (!isEmptyOrNull(this.options.lookupKey)) {
       const lookup = getLookup(this.options.lookupKey)
-      for (const item of lookup.items) {
+      for (const item of lookup.items as Array<{ [key: string]: any }>) {
         const textValue = item[lookup.textField]
         const text = textValue == null ? '' : textValue.toString()
         const idValue = item[lookup.idField]

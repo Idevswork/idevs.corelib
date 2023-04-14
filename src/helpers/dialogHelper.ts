@@ -75,9 +75,10 @@ export class DialogHelper {
   }
 
   public enabledEditItem<T>(form: T, ...targets: string[]): void {
+    const frm = form as { [key: string]: object }
     for (let i = 0; i < targets.length; i++) {
-      if (form[targets[i]].constructor.name == 'LookupEditor') {
-        form[targets[i]].readOnly = false
+      if (frm[targets[i]].constructor.name == 'LookupEditor') {
+        ;(frm[targets[i]] as HTMLInputElement).readOnly = false
       } else {
         $(`input[name="${targets[i]}"]`).prop('disabled', false).removeClass('readonly')
       }
@@ -85,13 +86,14 @@ export class DialogHelper {
   }
 
   public disabledEditItem<T>(form: T, ...targets: string[]): void {
+    const frm = form as { [key: string]: object }
     for (let i = 0; i < targets.length; i++) {
-      if (!form[targets[i]]) {
+      if (!frm[targets[i]]) {
         continue
       }
 
-      if (form[targets[i]].constructor.name == 'LookupEditor') {
-        form[targets[i]].readOnly = true
+      if (frm[targets[i]].constructor.name == 'LookupEditor') {
+        ;(frm[targets[i]] as HTMLInputElement).readOnly = true
       } else {
         $(`input[name="${targets[i]}"]`).prop('disabled', true).addClass('readonly')
       }
@@ -99,10 +101,11 @@ export class DialogHelper {
   }
 
   public disabledAndClearEditItem<T>(form: T, ...targets: string[]): void {
+    const frm = form as { [key: string]: object }
     for (let i = 0; i < targets.length; i++) {
-      const className = form[targets[i]].constructor.name
+      const className = frm[targets[i]].constructor.name
       if (className == 'LookupEditor') {
-        form[targets[i]].readOnly = true
+        ;(frm[targets[i]] as HTMLInputElement).readOnly = true
       } else {
         $(`input[name="${targets[i]}"]`).val('')
         $(`input[name="${targets[i]}"]`).addClass('readonly').prop('disabled', true)

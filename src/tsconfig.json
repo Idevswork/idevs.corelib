@@ -17,7 +17,6 @@
     "skipLibCheck": true,
     "types": ["jquery", "jquery.validation", "jqueryui", "toastr"],
     "outDir": "../dist",
-    "suppressImplicitAnyIndexErrors": true,
     "target": "ES6",
     "lib": ["ES6", "ES2020", "DOM"],
     "noEmitHelpers": false,
