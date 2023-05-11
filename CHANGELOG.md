@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.0.48 (2023-05-11)
+
+### Updates
+
+- Update CSS
+
+
+
 ## 0.0.47 (2023-05-11)
 
 ### Updates
