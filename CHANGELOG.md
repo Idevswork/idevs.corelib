@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.0.50 (2023-05-18)
+
+### Fixed
+
+- Fixed bug for function toDecimal and toNumber
+
+
+
 ## 0.0.49 (2023-05-13)
 
 ### Updates

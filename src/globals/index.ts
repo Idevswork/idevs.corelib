@@ -59,7 +59,7 @@ Number.prototype.toDecimal = function (precision?: number): string {
     maximumFractionDigits: numb,
   }
   let value = Intl.NumberFormat('en-US', options).format(this.valueOf())
-  value = parseFloat(value.replace(',', '')).toString()
+  value = parseFloat(value.replace(/,/g, '')).toString()
   return Intl.NumberFormat('en-US', options).format(parseFloat(value))
 }
 
@@ -69,7 +69,7 @@ String.prototype.truncate = function (maxLength: number) {
 }
 
 String.prototype.toNumber = function () {
-  return this.valueOf() ? parseFloat(this.valueOf().replace(',', '')) : 0
+  return this.valueOf() ? parseFloat(this.valueOf().replace(/,/g, '')) : 0
 }
 
 String.prototype.toMethodRound = function (method: number): number {
