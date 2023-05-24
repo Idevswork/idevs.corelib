@@ -304,6 +304,7 @@ export type IdevsExportRequest = ListRequest & {
   reportName?: string
   selectionRange?: string
   logo?: string
+  entity?: unknown
 }
 
 export type IdevsExportOptions = IdevsExportRequest & {
