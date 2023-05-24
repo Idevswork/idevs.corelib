@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.0.53 (2023-05-24)
+
+### Fixed
+
+- Chane property type in IdevsExportRequest
+
+
+
 ## 0.0.52 (2023-05-24)
 
 ### Updates

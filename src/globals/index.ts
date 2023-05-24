@@ -304,7 +304,8 @@ export type IdevsExportRequest = ListRequest & {
   reportName?: string
   selectionRange?: string
   logo?: string
-  entity?: unknown
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  entity?: any
 }
 
 export type IdevsExportOptions = IdevsExportRequest & {
@@ -334,5 +335,5 @@ export function createExportToolButton(options: ExportOptions): ToolButton {
 
 export class globals {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  public static load() {}
+  public static load() { }
 }
