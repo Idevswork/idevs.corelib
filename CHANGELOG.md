@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.0.55 (2023-05-26)
+
+### Fixed
+
+- Fixed mis-spell
+
+
+
 ## 0.0.54 (2023-05-26)
 
 ### Updates

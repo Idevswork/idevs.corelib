@@ -300,7 +300,7 @@ export function toSqlDateString(date: Date): string {
 
 export type AggreateColumn = {
   columnName: string
-  aggreateType: 'AVERAGE' | 'COUNT' | 'SUM'
+  aggregateType: 'AVERAGE' | 'COUNT' | 'SUM'
 }
 
 export type IdevsExportRequest = ListRequest & {
@@ -309,7 +309,7 @@ export type IdevsExportRequest = ListRequest & {
   reportName?: string
   selectionRange?: string
   logo?: string
-  aggreateColumns?: AggreateColumn[]
+  aggregateColumns?: AggreateColumn[]
 }
 
 export type IdevsExportOptions = IdevsExportRequest & {
@@ -339,5 +339,5 @@ export function createExportToolButton(options: ExportOptions): ToolButton {
 
 export class globals {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  public static load() {}
+  public static load() { }
 }
