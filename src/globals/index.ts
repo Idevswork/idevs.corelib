@@ -298,14 +298,18 @@ export function toSqlDateString(date: Date): string {
   return date.toISOString().split('T')[0]
 }
 
+export type AggreateColumn = {
+  columnName: string
+  aggreateType: 'AVERAGE' | 'COUNT' | 'SUM'
+}
+
 export type IdevsExportRequest = ListRequest & {
   viewName?: string
   companyName?: string
   reportName?: string
   selectionRange?: string
   logo?: string
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  entity?: any
+  aggreateColumns?: AggreateColumn[]
 }
 
 export type IdevsExportOptions = IdevsExportRequest & {
@@ -335,5 +339,5 @@ export function createExportToolButton(options: ExportOptions): ToolButton {
 
 export class globals {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  public static load() { }
+  public static load() {}
 }
