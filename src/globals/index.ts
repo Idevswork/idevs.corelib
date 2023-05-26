@@ -298,9 +298,17 @@ export function toSqlDateString(date: Date): string {
   return date.toISOString().split('T')[0]
 }
 
+export enum AggregateType {
+  LABEL = 0,
+  AVERAGE = 1,
+  COUNT = 2,
+  SUM = 3,
+}
+
 export type AggreateColumn = {
+  title: string
   columnName: string
-  aggregateType: 'AVERAGE' | 'COUNT' | 'SUM'
+  aggregateType: AggregateType
 }
 
 export type IdevsExportRequest = ListRequest & {
@@ -309,6 +317,7 @@ export type IdevsExportRequest = ListRequest & {
   reportName?: string
   selectionRange?: string
   logo?: string
+  entity?: unknown
   aggregateColumns?: AggreateColumn[]
 }
 
@@ -339,5 +348,5 @@ export function createExportToolButton(options: ExportOptions): ToolButton {
 
 export class globals {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  public static load() { }
+  public static load() {}
 }

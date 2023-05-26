@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.0.56 (2023-05-27)
+
+### Fixed
+
+- Fixed passing parameter from ExportOptions to IdevsExportRequest
+
+
+
 ## 0.0.55 (2023-05-26)
 
 ### Fixed

@@ -22,6 +22,8 @@ export function doExportExcel(options: IdevsExportOptions): void {
   request.reportName = options.reportName
   request.selectionRange = options.selectionRange
   request.logo = options.logo
+  request.entity = options.entity
+  request.aggregateColumns = options.aggregateColumns
 
   postToService({ service: options.service, request: request, target: '_blank' })
 }
