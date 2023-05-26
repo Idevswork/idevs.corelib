@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.0.57 (2023-05-27)
+
+### Fixed
+
+- Fixed optional parameter for ExportOptions
+
+
+
 ## 0.0.56 (2023-05-27)
 
 ### Fixed

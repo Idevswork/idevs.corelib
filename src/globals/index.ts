@@ -306,7 +306,7 @@ export enum AggregateType {
 }
 
 export type AggreateColumn = {
-  title: string
+  title?: string
   columnName: string
   aggregateType: AggregateType
 }
@@ -348,5 +348,5 @@ export function createExportToolButton(options: ExportOptions): ToolButton {
 
 export class globals {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  public static load() {}
+  public static load() { }
 }
