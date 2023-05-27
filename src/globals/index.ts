@@ -307,7 +307,7 @@ export enum AggregateType {
 
 export type AggreateColumn = {
   title?: string
-  columnName: string
+  columnName?: string
   aggregateType: AggregateType
 }
 

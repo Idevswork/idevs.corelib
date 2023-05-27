@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.0.58 (2023-05-27)
+
+### Updates
+
+- Change property columnName of IdevsExportRequest to optional
+
+
+
 ## 0.0.57 (2023-05-27)
 
 ### Fixed
