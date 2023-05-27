@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.0.59 (2023-05-27)
+
+### Updates
+
+- Update function updateDateQuickFilterProxyValue to return empty string when value is null
+
+
+
 ## 0.0.58 (2023-05-27)
 
 ### Updates

@@ -1,4 +1,5 @@
 import { DataGrid, ListRequest, ToolButton } from '@serenity-is/corelib'
+import { isEmptyOrNull } from '@serenity-is/corelib/q'
 import { Modal } from 'bootstrap'
 
 declare global {
@@ -289,7 +290,7 @@ export function addDateQuickFilterProxy(name: string, width: number): void {
  */
 export function updateDateQuickFilterProxyValue(name: string, dateValue: string, locale: string): void {
   const target = document.querySelector(`#${name}-2`) as HTMLInputElement
-  target.value = new Date(dateValue).toLocaleString(locale, dateStringOption())
+  target.value = isEmptyOrNull(dateValue) ? '' : new Date(dateValue).toLocaleString(locale, dateStringOption())
 }
 
 export function toSqlDateString(date: Date): string {
