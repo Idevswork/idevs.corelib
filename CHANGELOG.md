@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.0.60 (2023-05-31)
+
+### Updates
+
+- Add GROUP to AggregateType enum
+
+
+
 ## 0.0.59 (2023-05-27)
 
 ### Updates

@@ -301,9 +301,10 @@ export function toSqlDateString(date: Date): string {
 
 export enum AggregateType {
   LABEL = 0,
-  AVERAGE = 1,
-  COUNT = 2,
-  SUM = 3,
+  GROUP = 1,
+  AVERAGE = 2,
+  COUNT = 3,
+  SUM = 4,
 }
 
 export type AggreateColumn = {
