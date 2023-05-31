@@ -345,11 +345,19 @@ body {
 }
 
 .landscape-a4 {
-  height: 713px;
+  height: 703px;
+}
+
+.portrait-a3 {
+  height: 1496px;
+}
+
+.landscape-a3 {
+  height: 1032px;
 }
 
 .landscape-legal {
-  height: 736px;
+  height: 725px;
 }
 
 .align-page-bottom {
