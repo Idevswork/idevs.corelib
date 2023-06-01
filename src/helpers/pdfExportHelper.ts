@@ -23,8 +23,7 @@ export function doExportPdf(options: IdevsExportOptions): void {
   request.selectionRange = options.selectionRange
   request.logo = options.logo
   request.entity = options.entity
-  request.normalTheme = options.normalTheme
-  request.groupTheme = options.groupTheme
+  request.tableTheme = options.tableTheme
   request.aggregateColumns = options.aggregateColumns
 
   postToService({ service: options.service, request: request, target: '_blank' })

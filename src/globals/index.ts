@@ -384,8 +384,7 @@ export type IdevsExportRequest = ListRequest & {
   selectionRange?: string
   logo?: string
   entity?: unknown
-  normalTheme?: TableTheme
-  groupTheme?: TableTheme
+  tableTheme?: TableTheme
   aggregateColumns?: AggreateColumn[]
 }
 

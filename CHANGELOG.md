@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.0.62 (2023-06-01)
+
+### Changes
+
+- rename and remove talbe theme property on IdevsExportRequest
+
+
+
 ## 0.0.61 (2023-06-01)
 
 ### Added
