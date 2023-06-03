@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.0.63 (2023-06-03)
+
+### Added
+
+- Add conditionRange to IdevsExportRequest
+
+
+
 ## 0.0.62 (2023-06-01)
 
 ### Changes

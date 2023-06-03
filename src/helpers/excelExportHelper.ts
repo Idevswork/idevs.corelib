@@ -21,6 +21,7 @@ export function doExportExcel(options: IdevsExportOptions): void {
   request.companyName = options.companyName
   request.reportName = options.reportName
   request.selectionRange = options.selectionRange
+  request.conditionRange = options.conditionRange
   request.logo = options.logo
   request.entity = options.entity
   request.tableTheme = options.tableTheme

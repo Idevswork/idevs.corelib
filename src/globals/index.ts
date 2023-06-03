@@ -382,6 +382,7 @@ export type IdevsExportRequest = ListRequest & {
   companyName?: string
   reportName?: string
   selectionRange?: string
+  conditionRange?: string
   logo?: string
   entity?: unknown
   tableTheme?: TableTheme
