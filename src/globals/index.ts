@@ -414,6 +414,25 @@ export function createExportToolButton(options: ExportOptions): ToolButton {
   }
 }
 
+export function toBeginMonth(date: string): string {
+  if (isEmptyOrNull(date)) {
+    return date
+  }
+
+  return `${date.substring(0, 8)}01`
+}
+
+export function toEndMonth(date: string): string {
+  if (isEmptyOrNull(date)) {
+    return date
+  }
+
+  const dateArr = date.split('-')
+  const d = new Date(parseInt(dateArr[0]), parseInt(dateArr[1]), 0)
+
+  return `${date.substring(0, 8)}${d.getDate()}`
+}
+
 export class globals {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   public static load() {}
