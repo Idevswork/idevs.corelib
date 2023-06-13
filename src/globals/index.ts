@@ -261,8 +261,16 @@ export function addDateProxyInput(name: string): HTMLInputElement {
   return cloneInput
 }
 
-export function updateDateProxyValue(name: string, dateValue: string, locale: string): void {
-  updateDateQuickFilterProxyValue(name, dateValue, locale)
+export function updateDateProxyValue(name: string, dateValue: string | Date, locale: string): void {
+  const target = document.querySelector(`#${name}-2`) as HTMLInputElement
+  if (isEmptyOrNull(dateValue.toString())) {
+    target.value = ''
+  } else {
+    target.value = (dateValue.constructor == Date ? dateValue : new Date(dateValue)).toLocaleString(
+      locale,
+      dateStringOption(),
+    )
+  }
 }
 
 /**
@@ -297,8 +305,7 @@ export function addDateQuickFilterProxy(name: string, width: number): void {
  * @param {string} locale
  */
 export function updateDateQuickFilterProxyValue(name: string, dateValue: string, locale: string): void {
-  const target = document.querySelector(`#${name}-2`) as HTMLInputElement
-  target.value = isEmptyOrNull(dateValue) ? '' : new Date(dateValue).toLocaleString(locale, dateStringOption())
+  updateDateProxyValue(name, dateValue, locale)
 }
 
 export function toSqlDateString(date: Date): string {

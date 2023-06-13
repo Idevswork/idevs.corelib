@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.0.67 (2023-06-14)
+
+### Updates
+
+- Update updateDateProxyValue to support date and string
+
 ## 0.0.66 (2023-06-13)
 
 ### Updates
