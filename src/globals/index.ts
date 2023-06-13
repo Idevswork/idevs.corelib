@@ -243,18 +243,26 @@ export const setCookie = (name: string, value: string, expires?: number): void =
   document.cookie = `${cookie}; path=/`
 }
 
-export function doProxyInput(name: string): HTMLInputElement {
+export function addDateProxyInput(name: string): HTMLInputElement {
   const input: HTMLInputElement = document.querySelector(`input[name="${name}"]`)
   const cloneInput: HTMLInputElement = input.cloneNode(true) as HTMLInputElement
   cloneInput.setAttribute('name', `${name}-2`)
   cloneInput.setAttribute('id', `${input.getAttribute('id')}-2`)
+  cloneInput.setAttribute('readonly', 'readonly')
   cloneInput.classList.remove('customValidate')
+  cloneInput.classList.remove('s-DateEditor')
+  cloneInput.classList.remove('s-Serenity-DateEditor')
   cloneInput.classList.remove('dateQ')
+  cloneInput.classList.remove('hasDatepicker')
 
   input.parentNode.insertBefore(cloneInput, input.nextSibling)
   input.classList.add('d-none')
 
   return cloneInput
+}
+
+export function updateDateProxyValue(name: string, dateValue: string, locale: string): void {
+  updateDateQuickFilterProxyValue(name, dateValue, locale)
 }
 
 /**

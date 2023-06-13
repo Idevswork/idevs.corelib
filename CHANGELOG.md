@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.0.66 (2023-06-13)
+
+### Updates
+
+- Rename doProxyInput to addDateProxyInput
+- Add updateDateProxyValue
+
 ## 0.0.65 (2023-06-07)
 
 ### Added
