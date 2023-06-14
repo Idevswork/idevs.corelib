@@ -280,7 +280,7 @@ export function updateDateProxyValue(name: string, dateValue: string | Date | nu
   if (!target) {
     target = document.querySelector(`input[name=${name}-2]`) as HTMLInputElement
   }
-  if (isEmptyOrNull(dateValue.toString())) {
+  if (isEmptyOrNull(dateValue?.toString())) {
     target.value = ''
   } else {
     if (!locale) {
@@ -435,5 +435,5 @@ export function toEndMonth(date: string): string {
 
 export class globals {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  public static load() {}
+  public static load() { }
 }

@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.0.72 (2023-06-14)
+
+### Fixed
+
+- Fixed null exception error for updateDateProxyValue
+
 ## 0.0.71 (2023-06-14)
 
 ### Updated
