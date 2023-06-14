@@ -262,7 +262,10 @@ export function addDateProxyInput(name: string): HTMLInputElement {
 }
 
 export function updateDateProxyValue(name: string, dateValue: string | Date, locale: string): void {
-  const target = document.querySelector(`#${name}-2`) as HTMLInputElement
+  let target = document.querySelector(`#${name}-2`) as HTMLInputElement
+  if (!target) {
+    target = document.querySelector(`input[name=${name}-2]`) as HTMLInputElement
+  }
   if (isEmptyOrNull(dateValue.toString())) {
     target.value = ''
   } else {

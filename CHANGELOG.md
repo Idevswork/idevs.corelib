@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.0.68 (2023-06-14)
+
+### Fixed
+
+- Fixed proxy element is null when find by id so have to find by name also
+
 ## 0.0.67 (2023-06-14)
 
 ### Updates
