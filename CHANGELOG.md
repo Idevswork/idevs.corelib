@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.0.69 (2023-06-14)
+
+### Added
+
+- Add support to add date proxy input background color for enabled and disabled/readonly
+
 ## 0.0.68 (2023-06-14)
 
 ### Fixed

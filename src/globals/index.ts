@@ -243,7 +243,7 @@ export const setCookie = (name: string, value: string, expires?: number): void =
   document.cookie = `${cookie}; path=/`
 }
 
-export function addDateProxyInput(name: string): HTMLInputElement {
+export function addDateProxyInput(name: string, readOnly?: boolean): HTMLInputElement {
   const input: HTMLInputElement = document.querySelector(`input[name="${name}"]`)
   const cloneInput: HTMLInputElement = input.cloneNode(true) as HTMLInputElement
   cloneInput.setAttribute('name', `${name}-2`)
@@ -254,6 +254,11 @@ export function addDateProxyInput(name: string): HTMLInputElement {
   cloneInput.classList.remove('s-Serenity-DateEditor')
   cloneInput.classList.remove('dateQ')
   cloneInput.classList.remove('hasDatepicker')
+  if (readOnly) {
+    cloneInput.style.backgroundColor = 'rgba(var(--s-bright-rgb), 0.02)'
+  } else {
+    cloneInput.style.backgroundColor = 'white'
+  }
 
   input.parentNode.insertBefore(cloneInput, input.nextSibling)
   input.classList.add('d-none')
