@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.0.71 (2023-06-14)
+
+### Updated
+
+- Merge addDateProxyInput and addDateQuickFilterProxy into addDateProxyInput
+- Add dateDateProxyInputOption
+
 ## 0.0.70 (2023-06-14)
 
 ### Updated
