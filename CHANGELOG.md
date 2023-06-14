@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.0.70 (2023-06-14)
+
+### Updated
+
+- Update add date proxy value default locale to en-GB
+
 ## 0.0.69 (2023-06-14)
 
 ### Added

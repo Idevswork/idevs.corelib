@@ -266,7 +266,7 @@ export function addDateProxyInput(name: string, readOnly?: boolean): HTMLInputEl
   return cloneInput
 }
 
-export function updateDateProxyValue(name: string, dateValue: string | Date, locale: string): void {
+export function updateDateProxyValue(name: string, dateValue: string | Date, locale?: string): void {
   let target = document.querySelector(`#${name}-2`) as HTMLInputElement
   if (!target) {
     target = document.querySelector(`input[name=${name}-2]`) as HTMLInputElement
@@ -274,6 +274,9 @@ export function updateDateProxyValue(name: string, dateValue: string | Date, loc
   if (isEmptyOrNull(dateValue.toString())) {
     target.value = ''
   } else {
+    if (!locale) {
+      locale = 'en-GB'
+    }
     target.value = (dateValue.constructor == Date ? dateValue : new Date(dateValue)).toLocaleString(
       locale,
       dateStringOption(),
