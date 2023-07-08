@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.0.73 (2023-07-07)
+
+### Updated
+
+- Update DateMonthEditor to support uppercase
+
 ## 0.0.72 (2023-06-14)
 
 ### Fixed

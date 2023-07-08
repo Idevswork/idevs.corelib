@@ -435,5 +435,5 @@ export function toEndMonth(date: string): string {
 
 export class globals {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  public static load() { }
+  public static load() {}
 }

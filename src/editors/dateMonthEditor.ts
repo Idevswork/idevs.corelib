@@ -22,12 +22,18 @@ export class DateMonthEditor extends SelectEditor {
       return opt.items
     }
 
+    const today = new Date()
     this.months = []
     const locale = opt.locale ?? 'en'
     const options = { month: opt.display ?? '2-digit' }
+    const upperCase = opt.upperCase ?? false
 
     for (let i = 0; i <= 11; i++) {
-      this.months.push(new Date(2000, i, 1).toLocaleDateString(locale, options))
+      let m = new Date(today.getFullYear(), i, 1).toLocaleDateString(locale, options)
+      if (upperCase) {
+        m = m.toUpperCase()
+      }
+      this.months.push(m)
     }
 
     return this.months
@@ -38,4 +44,5 @@ export class DateMonthEditor extends SelectEditor {
 export interface DateMonthEditorOptions extends SelectEditorOptions {
   display?: '2-digit' | 'short' | 'long'
   locale?: 'en' | 'th'
+  upperCase?: boolean
 }
