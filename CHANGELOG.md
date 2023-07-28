@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.0.78 (2023-07-28)
+
+### Fixed
+
+- Fixed error LookupFormatter again
+
+## 0.0.77 (2023-07-28)
+
+### Test
+
 ## 0.0.76 (2023-07-28)
 
 ### Fixed
