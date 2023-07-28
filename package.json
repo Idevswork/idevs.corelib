@@ -1,6 +1,6 @@
 {
   "name": "@idevs/corelib",
-  "version": "0.0.75",
+  "version": "0.0.76",
   "description": "Extended library for Serenity Framework",
   "main": "src/index.js",
   "scripts": {

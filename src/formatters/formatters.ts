@@ -88,7 +88,7 @@ export class LookupFormatter implements Formatter {
 
     if (!this.lookupKey) return src
 
-    const idList = src.includes(',') ? src.split(',') : [src]
+    const idList = src.indexOf(',') != -1 ? src.split(',') : [src]
 
     return idList
       .map(x => {
@@ -122,5 +122,5 @@ export class DateMonthFormatter implements Formatter {
 
 export class idevsFormatters {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  public static load() {}
+  public static load() { }
 }
