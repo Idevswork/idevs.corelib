@@ -88,7 +88,7 @@ export class LookupFormatter implements Formatter {
 
     if (!this.lookupKey) return src
 
-    const idList = src.split(',')
+    const idList = src.includes(',') ? src.split(',') : [src]
 
     return idList
       .map(x => {
