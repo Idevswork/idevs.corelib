@@ -1,6 +1,6 @@
 import { Decorators } from '@serenity-is/corelib'
 import { FormatterContext } from '@serenity-is/sleekgrid'
-import { getLookupAsync, htmlEncode } from '@serenity-is/corelib/q'
+import { getLookup, htmlEncode } from '@serenity-is/corelib/q'
 
 export type Formatter = {
   format(ctx: FormatterContext): string
@@ -66,21 +66,8 @@ export class CheckboxFormatter implements Formatter {
 
 @Decorators.registerFormatter('Idevs.LookupFormatter')
 export class LookupFormatter implements Formatter {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  items: Array<{ [key: string]: any }>
-  idField: string
-  textField: string
-
   @Decorators.option()
   public lookupKey: string
-
-  constructor() {
-    getLookupAsync(this.lookupKey).then(data => {
-      this.items = data.items
-      this.idField = data.idField
-      this.textField = data.textField
-    })
-  }
 
   format(ctx: FormatterContext): string {
     const src = ctx.value as string
@@ -88,14 +75,19 @@ export class LookupFormatter implements Formatter {
 
     if (!this.lookupKey) return src
 
+    const lookup = getLookup(this.lookupKey)
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const items = lookup.items as Array<{ [key: string]: any }>
+    const idField = lookup.idField
+    const textField = lookup.textField
     const idList = src.toString().split(',')
 
     return idList
       .map(x => {
-        const g = this.items.find(i => i[this.idField] == x)
+        const g = items.find(i => i[idField] == x)
         if (!g) return x
 
-        return htmlEncode(g[this.textField])
+        return htmlEncode(g[textField])
       })
       .join(', ')
   }

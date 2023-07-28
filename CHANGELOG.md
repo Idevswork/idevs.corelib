@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.0.79 (2023-07-29)
+
+### Fixed
+
+- Rollback to 0.0.73 and add toString()
+
 ## 0.0.78 (2023-07-28)
 
 ### Fixed
