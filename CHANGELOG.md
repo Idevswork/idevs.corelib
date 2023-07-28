@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.0.74 (2023-07-28)
+
+### Updated
+
+- Change lookup formatter to use getLookupAsync
+
 ## 0.0.73 (2023-07-07)
 
 ### Updated
