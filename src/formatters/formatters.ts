@@ -114,5 +114,5 @@ export class DateMonthFormatter implements Formatter {
 
 export class idevsFormatters {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  public static load() { }
+  public static load() {}
 }

@@ -1,6 +1,6 @@
 import { DataGrid, ListRequest, ToolButton } from '@serenity-is/corelib'
 import { isEmptyOrNull } from '@serenity-is/corelib/q'
-import { Modal } from 'bootstrap'
+// import { Modal } from 'bootstrap'
 
 declare global {
   // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
@@ -215,22 +215,22 @@ export function toDateString(date: Date): string {
   return date.toLocaleString('en-GB', dateStringOption())
 }
 
-export function GetModal(name: string, options?: IModalOptions): Modal {
-  const el = document.querySelector(name) as HTMLElement
-  if (options?.events?.length) {
-    options.events.forEach(callback => {
-      el.addEventListener(
-        callback.event,
-        (e: Event) => {
-          callback.callback(e)
-        },
-        { once: true },
-      )
-    })
-  }
+// export function GetModal(name: string, options?: IModalOptions): Modal {
+//   const el = document.querySelector(name) as HTMLElement
+//   if (options?.events?.length) {
+//     options.events.forEach(callback => {
+//       el.addEventListener(
+//         callback.event,
+//         (e: Event) => {
+//           callback.callback(e)
+//         },
+//         { once: true },
+//       )
+//     })
+//   }
 
-  return Modal.getOrCreateInstance(el, { backdrop: 'static' })
-}
+//   return Modal.getOrCreateInstance(el, { backdrop: 'static' })
+// }
 
 export const setCookie = (name: string, value: string, expires?: number): void => {
   let cookie = `${name}=${value}`

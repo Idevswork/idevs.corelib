@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.0.80 (2023-08-14)
+
+### Updated
+
+- Remove GetModal boostrap because it block serenity menu
+
 ## 0.0.79 (2023-07-29)
 
 ### Fixed
