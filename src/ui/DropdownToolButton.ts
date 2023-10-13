@@ -1,6 +1,5 @@
-/// <reference types="bootstrap" />
-
 import { coalesce, first, isEmptyOrNull, tryFirst } from '@serenity-is/corelib/q'
+import { Dropdown } from 'bootstrap'
 
 export type DropdownToolButtonOptions = {
   title?: string
@@ -17,7 +16,7 @@ export type DropdownToolButtonItem = {
   hint?: string
   cssClass?: string
   icon?: string
-  onClick?: (e: JQuery.ClickEvent<HTMLElement, null, HTMLElement, HTMLElement>) => void
+  onClick?: (e: Event) => void
   isSeparator?: boolean
   disabled?: boolean
   isDropdownHeader?: boolean
@@ -30,7 +29,7 @@ export type ToolDropdownSideButtonItem = {
   hint?: string
   cssClass?: string
   icon?: string
-  onClick?: (e: JQuery.ClickEvent<HTMLElement, null, HTMLElement, HTMLElement>) => void
+  onClick?: (e: Event) => void
   disabled?: boolean
 }
 
@@ -47,7 +46,12 @@ export class DropdownToolButton {
     this.addDropdownItems(buttons)
 
     this.element.on('click', () => {
-      $('.dropdown-toggle', this.element).dropdown('toggle')
+      const dp = Dropdown.getOrCreateInstance($('.dropdown-toggle', this.element)[0])
+      if ($('.dropdown-menu', this.element).hasClass('show')) {
+        dp.toggle()
+      } else {
+        dp.show()
+      }
     })
 
     container.append(this.element)
@@ -138,7 +142,7 @@ export class DropdownToolButton {
                     </a>
                 </li>`)
 
-        dropdownItemElement.on('click', (e: JQuery.ClickEvent<HTMLElement, null, HTMLElement, HTMLElement>) => {
+        dropdownItemElement.on('click', (e: Event) => {
           e.preventDefault()
 
           if (this.isDisabled) {
@@ -276,7 +280,7 @@ export class DropdownToolButton {
 
     const sideButton = $(sideButtonTemplate)
 
-    sideButton.on('click', (e: JQuery.ClickEvent<HTMLElement, null, HTMLElement, HTMLElement>) => {
+    sideButton.on('click', (e: Event) => {
       e.preventDefault()
 
       let buttonIsDisabled = button.disabled

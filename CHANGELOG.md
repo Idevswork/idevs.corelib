@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.0.81 (2023-10-13)
+
+### Fixed
+
+- Fixed DropdownToolButton not show dropdown when click. It's because the bootstrap
+
 ## 0.0.80 (2023-08-14)
 
 ### Updated
