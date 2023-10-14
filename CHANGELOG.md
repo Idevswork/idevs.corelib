@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.0.82 (2023-10-14)
+
+### Update
+
+- Update IDevsExportRequest by add new property PageSize and PageMargin
+
 ## 0.0.81 (2023-10-13)
 
 ### Fixed

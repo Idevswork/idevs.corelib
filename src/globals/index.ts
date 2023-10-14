@@ -363,6 +363,13 @@ export enum TableTheme {
   TableStyleMedium28 = 128,
 }
 
+export type PageMargin = {
+  MarginLeft: string
+  MarginTop: string
+  MarginRight: string
+  MarginBottom: string
+}
+
 export enum AggregateType {
   LABEL = 0,
   GROUP = 1,
@@ -384,6 +391,8 @@ export type IdevsExportRequest = ListRequest & {
   selectionRange?: string
   conditionRange?: string
   logo?: string
+  pageSize?: string
+  margin?: PageMargin
   entity?: unknown
   tableTheme?: TableTheme
   aggregateColumns?: AggreateColumn[]
