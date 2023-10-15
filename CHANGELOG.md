@@ -1,8 +1,16 @@
 # Changelog
 
+## 0.0.83 (2023-10-15)
+
+### Updates
+
+- Add PageSizes enum, PageOrientations enum
+- Add PageSize
+- Update IdevsExportRequest
+
 ## 0.0.82 (2023-10-14)
 
-### Update
+### Updates
 
 - Update IDevsExportRequest by add new property PageSize and PageMargin
 

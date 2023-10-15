@@ -363,6 +363,21 @@ export enum TableTheme {
   TableStyleMedium28 = 128,
 }
 
+export enum PageSizes {
+  A4 = 0,
+  A3 = 1,
+}
+
+export enum PageOrientations {
+  Portrait = 0,
+  Landscape = 1,
+}
+
+export type PageSize = {
+  Size: PageSize
+  Orientation: PageOrientations
+}
+
 export type PageMargin = {
   MarginLeft: string
   MarginTop: string
@@ -391,7 +406,7 @@ export type IdevsExportRequest = ListRequest & {
   selectionRange?: string
   conditionRange?: string
   logo?: string
-  pageSize?: string
+  pageSize?: PageSize
   margin?: PageMargin
   entity?: unknown
   tableTheme?: TableTheme
