@@ -24,6 +24,10 @@ export type CheckboxButtonEditorOptions = {
 @Decorators.registerEditor('CheckboxButtonEditor')
 @Element('<div/>')
 export class CheckboxButtonEditor extends Widget<CheckboxButtonEditorOptions> implements IReadOnly {
+  private _items: Array<{ [key: string]: any }>
+  private _idField: string
+  private _textField: string
+
   constructor(input: JQuery, opt: CheckboxButtonEditorOptions) {
     super(input, opt)
 
@@ -33,13 +37,9 @@ export class CheckboxButtonEditor extends Widget<CheckboxButtonEditorOptions> im
 
     if (!isEmptyOrNull(this.options.lookupKey)) {
       const lookup = getLookup(this.options.lookupKey)
-      for (const item of lookup.items as Array<{ [key: string]: any }>) {
-        const textValue = item[lookup.textField]
-        const text = textValue == null ? '' : textValue.toString()
-        const idValue = item[lookup.idField]
-        const id = idValue == null ? '' : idValue.toString()
-        this.addCheckbox(id, text)
-      }
+      this._idField = lookup.idField
+      this._textField = lookup.textField
+      this.set_items(lookup.items as Array<{ [key: string]: any }>)
     } else {
       const enumType = this.options.enumType || EnumTypeRegistry.get(this.options.enumKey)
       let enumKey = this.options.enumKey
@@ -60,6 +60,18 @@ export class CheckboxButtonEditor extends Widget<CheckboxButtonEditorOptions> im
     this.element.addClass('d-flex flex-wrap')
   }
 
+  protected renderCheckboxes() {
+    this.element.children('div').remove()
+
+    for (const item of this._items) {
+      const textValue = item[this._textField]
+      const text = textValue == null ? '' : textValue.toString()
+      const idValue = item[this._idField]
+      const id = idValue == null ? '' : idValue.toString()
+      this.addCheckbox(id, text)
+    }
+  }
+
   protected addCheckbox(value: string, text: string) {
     const div = $('<div class="col-12 col-sm-6 col-md-4 col-xl-3" />')
     const label = $('<label/>').text(text)
@@ -70,6 +82,23 @@ export class CheckboxButtonEditor extends Widget<CheckboxButtonEditorOptions> im
       .prependTo(label)
     label.appendTo(div)
     div.appendTo(this.element)
+  }
+
+  get_items(): Array<{ [key: string]: any }> {
+    return this._items
+  }
+
+  get items(): Array<{ [key: string]: any }> {
+    return this.get_items()
+  }
+
+  set_items(value: Array<{ [key: string]: any }>) {
+    this._items = value
+    this.renderCheckboxes()
+  }
+
+  set items(v: Array<{ [key: string]: any }>) {
+    this.set_items(v)
   }
 
   get_value(): string {

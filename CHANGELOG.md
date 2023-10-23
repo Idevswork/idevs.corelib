@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.0.84 (2023-10-23)
+
+### Updates
+
+- Add property to CheckBoxButtonEditor that can get items or set items to update rendering output
+
 ## 0.0.83 (2023-10-15)
 
 ### Updates
