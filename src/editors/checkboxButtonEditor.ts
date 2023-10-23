@@ -19,14 +19,16 @@ export type CheckboxButtonEditorOptions = {
   enumKey?: string
   enumType?: any
   lookupKey?: string
+  isStringId?: boolean
 }
 
 @Decorators.registerEditor('CheckboxButtonEditor')
 @Element('<div/>')
 export class CheckboxButtonEditor extends Widget<CheckboxButtonEditorOptions> implements IReadOnly {
   private _items: Array<{ [key: string]: any }>
-  private _idField: string
-  private _textField: string
+  private readonly _idField: string
+  private readonly _textField: string
+  private readonly _isStringId: boolean
 
   constructor(input: JQuery, opt: CheckboxButtonEditorOptions) {
     super(input, opt)
@@ -34,6 +36,8 @@ export class CheckboxButtonEditor extends Widget<CheckboxButtonEditorOptions> im
     if (isEmptyOrNull(this.options.enumKey) && this.options.enumType == null && isEmptyOrNull(this.options.lookupKey)) {
       return
     }
+
+    this._isStringId = this.options.isStringId
 
     if (!isEmptyOrNull(this.options.lookupKey)) {
       const lookup = getLookup(this.options.lookupKey)
@@ -102,9 +106,9 @@ export class CheckboxButtonEditor extends Widget<CheckboxButtonEditorOptions> im
   }
 
   get_value(): string {
-    const val: number[] = []
+    const val: unknown[] = []
     this.element.find('input:checked').each((i, e) => {
-      val.push(toId($(e).val()))
+      val.push(this._isStringId ? $(e).val() : toId($(e).val()))
     })
     return val.join(',')
   }
@@ -115,8 +119,10 @@ export class CheckboxButtonEditor extends Widget<CheckboxButtonEditorOptions> im
 
   set_value(value: string): void {
     if (value !== this.get_value()) {
-      let values: number[] = []
-      if (!isEmptyOrNull(value)) values = value.split(',').map(p => Number(p))
+      let values: unknown[] = []
+      if (!isEmptyOrNull(value)) {
+        values = this._isStringId ? value.split(',') : value.split(',').map(p => Number(p))
+      }
       const inputs = this.element.find('input')
       inputs.each((i, e) => {
         ;(e as HTMLInputElement).checked = false

@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.0.85 (2023-10-23)
+
+### Updates
+
+- Add option isStringId to correct mapping value
+
 ## 0.0.84 (2023-10-23)
 
 ### Updates
