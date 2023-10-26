@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.0.86 (2023-10-26)
+
+### Updates
+
+- Add space after comma for CheckBoxButtonEditor to be easy to wrap line
+
 ## 0.0.85 (2023-10-23)
 
 ### Updates

@@ -78,8 +78,8 @@ export class CheckboxButtonEditor extends Widget<CheckboxButtonEditorOptions> im
 
   protected addCheckbox(value: string, text: string) {
     const div = $('<div class="col-12 col-sm-6 col-md-4 col-xl-3" />')
-    const label = $('<label/>').text(text)
-    $('<input type="checkbox" class="me-2"/>')
+    const label = $('<label/>').text(text.replace(/, /g, ',').replace(/,/g, ', '))
+    $('<input type="checkbox" class="me-2" />')
       .attr('name', this.uniqueName)
       .attr('id', this.uniqueName + '_' + value)
       .attr('value', value)
