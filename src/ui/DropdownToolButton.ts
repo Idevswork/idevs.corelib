@@ -44,16 +44,6 @@ export class DropdownToolButton {
     this.element = this.buildBaseDropdown()
     this.addDropdownItems(buttons)
 
-    this.element.on('click', () => {
-      const dropdownMenu = $('.dropdown-menu', this.element)
-
-      if (dropdownMenu.hasClass('show')) {
-        dropdownMenu.removeClass('show')
-      } else {
-        dropdownMenu.addClass('show')
-      }
-    })
-
     container.append(this.element)
   }
 

@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.0.88 (2023-12-23)
+
+### Updates
+
+- Remove click function from DropdownToolButton. No need to manipulate dropdown toggle here.
+
 ## 0.0.87 (2023-12-23)
 
 ### Updates
