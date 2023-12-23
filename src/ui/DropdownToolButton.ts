@@ -1,5 +1,4 @@
 import { coalesce, first, isEmptyOrNull, tryFirst } from '@serenity-is/corelib/q'
-import { Dropdown } from 'bootstrap'
 
 export type DropdownToolButtonOptions = {
   title?: string
@@ -46,11 +45,12 @@ export class DropdownToolButton {
     this.addDropdownItems(buttons)
 
     this.element.on('click', () => {
-      const dp = Dropdown.getOrCreateInstance($('.dropdown-toggle', this.element)[0])
-      if ($('.dropdown-menu', this.element).hasClass('show')) {
-        dp.toggle()
+      const dropdownMenu = $('.dropdown-menu', this.element)
+
+      if (dropdownMenu.hasClass('show')) {
+        dropdownMenu.removeClass('show')
       } else {
-        dp.show()
+        dropdownMenu.addClass('show')
       }
     })
 

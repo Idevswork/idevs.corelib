@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.0.87 (2023-12-23)
+
+### Updates
+
+- Update DropDownToolButton to use manual dropdown instead of bootstrap script
+
 ## 0.0.86 (2023-10-26)
 
 ### Updates
