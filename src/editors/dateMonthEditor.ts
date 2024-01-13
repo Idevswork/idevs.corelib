@@ -1,5 +1,5 @@
 import { Decorators, SelectEditor, SelectEditorOptions } from '@serenity-is/corelib'
-import { indexOf } from '@serenity-is/corelib/q'
+import { indexOf } from '@serenity-is/corelib'
 
 @Decorators.registerEditor('DateMonthEditor')
 export class DateMonthEditor extends SelectEditor {

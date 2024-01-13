@@ -1,4 +1,4 @@
-import { coalesce, first, isEmptyOrNull, tryFirst } from '@serenity-is/corelib/q'
+import { first, isEmptyOrNull, tryFirst } from '@serenity-is/corelib'
 
 export type DropdownToolButtonOptions = {
   title?: string
@@ -76,7 +76,7 @@ export class DropdownToolButton {
 
   private buildBaseDropdown(): JQuery {
     const dropdownTemplate = `<div class="buttons-inner dropdown" style="overflow: visible">
-    <div class="idevs-tool-dropdown-button tool-button icon-tool-button ${coalesce(this.options.cssClass, '')} ${
+    <div class="idevs-tool-dropdown-button tool-button icon-tool-button ${(this.options.cssClass ?? '')} ${
       this.options.isDropUp ? 'dropup' : ''
     } ${this.isDisabled ? 'disabled' : ''}" style="cursor: unset;">
         <div class="button-outer dropdown-toggle ${this.isDisabled ? 'disabled' : ''}"
@@ -84,7 +84,7 @@ export class DropdownToolButton {
         style="cursor: pointer;">
             <span class="button-inner">
                 <i class="${this.options.icon}"></i>
-                ${coalesce(this.options.title, '')}
+                ${(this.options.title ?? '')}
             </span>
             <i class="caret"></i>
         </div>
@@ -117,17 +117,17 @@ export class DropdownToolButton {
 
     if (button.isDropdownHeader && !isEmptyOrNull(button.dropdownHeaderTitle)) {
       dropdownItemElement = $(
-        `<li class="dropdown-header ${coalesce(button.cssClass, '')}">${button.dropdownHeaderTitle}</li>`,
+        `<li class="dropdown-header ${(button.cssClass ?? '')}">${button.dropdownHeaderTitle}</li>`,
       )
     } else {
       if (button.isSeparator) {
         dropdownItemElement = $(`<li class="dropdown-divider"></li>`)
       } else {
         dropdownItemElement = $(`<li class="${button.disabled ? 'disabled' : ''}"
-                title="${coalesce(button.hint, '')}"
-                data-idevs-key="${coalesce(button.key, '')}">
-                    <a href="#" class="${coalesce(button.cssClass, 'dropdown-item')}">
-                        <i class="${coalesce(button.icon, '')}"></i>
+                title="${(button.hint ?? '')}"
+                data-idevs-key="${(button.key ?? '')}">
+                    <a href="#" class="${(button.cssClass ?? 'dropdown-item')}">
+                        <i class="${(button.icon ?? '')}"></i>
                         ${button.title}
                     </a>
                 </li>`)
@@ -256,14 +256,14 @@ export class DropdownToolButton {
       this.setDisablingStateItem(button.key, button.disabled || false)
     }
 
-    const sideButtonTemplate = `<div class="tool-button add-button icon-tool-button ${coalesce(button.cssClass, '')} ${
+    const sideButtonTemplate = `<div class="tool-button add-button icon-tool-button ${(button.cssClass ?? '')} ${
       button.disabled ? 'disabled' : ''
     }"
-        data-idevs-key="${coalesce(button.key, '')}"
-        title="${coalesce(button.title, '')}">
+        data-idevs-key="${(button.key ?? '')}"
+        title="${(button.title ?? '')}">
             <div class="button-outer">
                 <span class="button-inner">
-                    <i class="${coalesce(button.icon, '')}"></i>
+                    <i class="${(button.icon ?? '')}"></i>
                 </span>
             </div>
         </div>`

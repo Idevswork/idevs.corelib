@@ -1,4 +1,3 @@
-import { coalesce } from '@serenity-is/corelib/q'
 import { neededTarget } from '../globals'
 
 export type ToggleToolButtonOptions = {
@@ -53,14 +52,14 @@ export class ToggleToolButton {
 
   private buildBaseButton(): JQuery {
     const buttonTemplate = `<div class="buttons-inner" style="overflow: visible">
-    <div class="idevs-toggle-button tool-button icon-tool-button ${coalesce(this.options.cssClass, '')} ${
+    <div class="idevs-toggle-button tool-button icon-tool-button ${(this.options.cssClass ?? '')} ${
       this.isDisabled ? 'disabled' : ''
     }" style="cursor: unset;">
         <div class="button-outer ${this.isDisabled ? 'disabled' : ''}"
         style="cursor: pointer;">
             <span class="button-inner">
                 <i class="${this.options.icon}"></i>
-                ${coalesce(this.options.title, '')}
+                ${(this.options.title ?? '')}
             </span>
             <i class="caret"></i>
         </div>

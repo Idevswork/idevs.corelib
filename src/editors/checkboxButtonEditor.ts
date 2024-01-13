@@ -3,16 +3,7 @@
 // reference: https://github-wiki-see.page/m/serenity-is/Serenity/wiki/CheckBox-Group-Editor
 
 import { Decorators, EnumKeyAttribute, EnumTypeRegistry, IReadOnly, Widget } from '@serenity-is/corelib'
-import {
-  coalesce,
-  Enum,
-  getAttributes,
-  getLookup,
-  isArray,
-  isEmptyOrNull,
-  toId,
-  tryGetText,
-} from '@serenity-is/corelib/q'
+import { Enum, getAttributes, getLookup, isArray, isEmptyOrNull, toId, tryGetText } from '@serenity-is/corelib'
 import Element = Decorators.element
 
 export type CheckboxButtonEditorOptions = {
@@ -57,7 +48,7 @@ export class CheckboxButtonEditor extends Widget<CheckboxButtonEditorOptions> im
       const values = Enum.getValues(enumType)
       for (const x of values) {
         const name = Enum.toString(enumType, x)
-        this.addCheckbox(x.toString(), coalesce(tryGetText('Enums.' + enumKey + '.' + name), name))
+        this.addCheckbox(x.toString(), tryGetText('Enums.' + enumKey + '.' + name) ?? name)
       }
     }
 

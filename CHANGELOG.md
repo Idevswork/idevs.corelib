@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.0.89 (2024-01-13)
+
+### Changes
+
+- Update serenity to version 8.1.5
+- Remove support aggregate columns on ExcelExporter because it's cause performance issue
+
 ## 0.0.88 (2023-12-23)
 
 ### Updates

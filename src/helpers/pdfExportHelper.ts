@@ -1,4 +1,4 @@
-import { deepClone, postToService } from '@serenity-is/corelib/q'
+import { deepClone, postToService } from '@serenity-is/corelib'
 import { IdevsExportOptions, IdevsExportRequest } from '../globals'
 
 export function doExportPdf(options: IdevsExportOptions): void {
@@ -24,8 +24,6 @@ export function doExportPdf(options: IdevsExportOptions): void {
   request.conditionRange = options.conditionRange
   request.logo = options.logo
   request.entity = options.entity
-  request.tableTheme = options.tableTheme
-  request.aggregateColumns = options.aggregateColumns
 
   postToService({ service: options.service, request: request, target: '_blank' })
 }

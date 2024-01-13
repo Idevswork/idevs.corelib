@@ -1,6 +1,6 @@
 {
   "name": "@idevs/corelib",
-  "version": "0.0.88",
+  "version": "0.0.89",
   "description": "Extended library for Serenity Framework",
   "main": "src/index.js",
   "scripts": {
@@ -30,8 +30,8 @@
     "url": "git+https://github.com/klomkling/idevs.corelib"
   },
   "dependencies": {
-    "@serenity-is/corelib": "^6.5.1",
-    "@serenity-is/sleekgrid": "^1.5.5",
+    "@serenity-is/corelib": "^8.1.5",
+    "@serenity-is/sleekgrid": "^1.6.4",
     "@types/bootstrap": "^5.2.10",
     "@types/jquery": "^3.5.29",
     "@types/jquery.validation": "^1.16.10",

@@ -1,6 +1,6 @@
 import { Decorators } from '@serenity-is/corelib'
 import { FormatterContext } from '@serenity-is/sleekgrid'
-import { getLookup, htmlEncode } from '@serenity-is/corelib/q'
+import { getLookup, htmlEncode } from '@serenity-is/corelib'
 
 export type Formatter = {
   format(ctx: FormatterContext): string

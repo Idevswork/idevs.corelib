@@ -1,5 +1,5 @@
 import { Column } from '@serenity-is/sleekgrid'
-import { indexOf, tryFirst } from '@serenity-is/corelib/q'
+import { indexOf, tryFirst } from '@serenity-is/corelib'
 import { EntityGrid, ToolButton } from '@serenity-is/corelib'
 
 /**
