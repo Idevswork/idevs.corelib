@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.0.90 (2024-01-13)
+
+### Updates
+
+- Remove @types/bootstrap that no used
+
 ## 0.0.89 (2024-01-13)
 
 ### Changes
