@@ -2,9 +2,22 @@
 /* eslint-disable @typescript-eslint/adjacent-overload-signatures */
 // reference: https://github-wiki-see.page/m/serenity-is/Serenity/wiki/CheckBox-Group-Editor
 
-import { Decorators, EnumKeyAttribute, EnumTypeRegistry, IReadOnly, Widget } from '@serenity-is/corelib'
-import { Enum, getAttributes, getLookup, isArray, isEmptyOrNull, toId, tryGetText } from '@serenity-is/corelib'
-import Element = Decorators.element
+import {
+  Decorators,
+  EditorProps,
+  EditorWidget,
+  Enum,
+  EnumKeyAttribute,
+  EnumTypeRegistry,
+  Fluent,
+  IReadOnly,
+  getCustomAttributes,
+  getLookup,
+  isArray,
+  isEmptyOrNull,
+  toId,
+  tryGetText,
+} from '@serenity-is/corelib'
 
 export type CheckboxButtonEditorOptions = {
   enumKey?: string
@@ -14,15 +27,22 @@ export type CheckboxButtonEditorOptions = {
 }
 
 @Decorators.registerEditor('CheckboxButtonEditor')
-@Element('<div/>')
-export class CheckboxButtonEditor extends Widget<CheckboxButtonEditorOptions> implements IReadOnly {
+export class CheckboxButtonEditor<P extends CheckboxButtonEditorOptions = CheckboxButtonEditorOptions>
+  extends EditorWidget<P>
+  implements IReadOnly
+{
   private _items: Array<{ [key: string]: any }>
   private readonly _idField: string
   private readonly _textField: string
   private readonly _isStringId: boolean
 
-  constructor(input: JQuery, opt: CheckboxButtonEditorOptions) {
-    super(input, opt)
+  static override createDefaultElement() {
+    return Fluent('div').getNode()
+  }
+  declare readonly domNode: HTMLElement
+
+  constructor(props: EditorProps<P>) {
+    super(props)
 
     if (isEmptyOrNull(this.options.enumKey) && this.options.enumType == null && isEmptyOrNull(this.options.lookupKey)) {
       return
@@ -40,7 +60,7 @@ export class CheckboxButtonEditor extends Widget<CheckboxButtonEditorOptions> im
       let enumKey = this.options.enumKey
 
       if (enumKey == null && enumType != null) {
-        const enumKeyAttr = getAttributes(enumType, EnumKeyAttribute, false)
+        const enumKeyAttr = getCustomAttributes(enumType, EnumKeyAttribute, false)
         if (enumKeyAttr.length > 0) {
           enumKey = enumKeyAttr[0].value
         }
@@ -52,11 +72,14 @@ export class CheckboxButtonEditor extends Widget<CheckboxButtonEditorOptions> im
       }
     }
 
-    this.element.addClass('d-flex flex-wrap')
+    this.domNode.classList.add('d-flex', 'flex-wrap')
   }
 
   protected renderCheckboxes() {
-    this.element.children('div').remove()
+    const childDivs = this.domNode.querySelectorAll('div')
+    childDivs.forEach(function (child) {
+      this.domNode.removeChild(child)
+    })
 
     for (const item of this._items) {
       const textValue = item[this._textField]
@@ -76,7 +99,7 @@ export class CheckboxButtonEditor extends Widget<CheckboxButtonEditorOptions> im
       .attr('value', value)
       .prependTo(label)
     label.appendTo(div)
-    div.appendTo(this.element)
+    div.appendTo(this.domNode)
   }
 
   get_items(): Array<{ [key: string]: any }> {
@@ -96,11 +119,14 @@ export class CheckboxButtonEditor extends Widget<CheckboxButtonEditorOptions> im
     this.set_items(v)
   }
 
-  get_value(): string {
-    const val: unknown[] = []
-    this.element.find('input:checked').each((i, e) => {
-      val.push(this._isStringId ? $(e).val() : toId($(e).val()))
+  get_value() {
+    const val: string[] = []
+    const inputs = this.domNode.querySelectorAll('input:checked')
+
+    inputs.forEach((input: HTMLInputElement) => {
+      val.push(this._isStringId ? input.value : toId(input.value))
     })
+
     return val.join(',')
   }
 
@@ -114,24 +140,17 @@ export class CheckboxButtonEditor extends Widget<CheckboxButtonEditorOptions> im
       if (!isEmptyOrNull(value)) {
         values = this._isStringId ? value.split(',') : value.split(',').map(p => Number(p))
       }
-      const inputs = this.element.find('input')
-      inputs.each((i, e) => {
-        ;(e as HTMLInputElement).checked = false
+      const inputs = this.domNode.querySelectorAll<HTMLInputElement>('input')
+      inputs.forEach(input => {
+        input.checked = false
       })
 
-      if (isArray(values)) {
-        values.forEach(v => {
-          const checks = inputs.filter('[value=' + v + ']')
-          if (checks.length > 0) {
-            ;(checks[0] as HTMLInputElement).checked = true
-          }
-        })
-      } else {
-        const checks = inputs.filter('[value=' + values + ']')
+      values.forEach(v => {
+        const checks = Array.from(inputs).filter(input => (input as HTMLInputElement).value === v)
         if (checks.length > 0) {
-          ;(checks[0] as HTMLInputElement).checked = true
+          (checks[0] as HTMLInputElement).checked = true
         }
-      }
+      })
     }
   }
 
@@ -140,15 +159,21 @@ export class CheckboxButtonEditor extends Widget<CheckboxButtonEditorOptions> im
   }
 
   get_readOnly(): boolean {
-    return this.element.attr('disabled') != null
+    return this.domNode.getAttribute('disabled') != null
   }
 
   set_readOnly(value: boolean): void {
     if (this.get_readOnly() !== value) {
       if (value) {
-        this.element.attr('disabled', 'disabled').find('input').attr('disabled', 'disabled')
+        this.domNode.setAttribute('disabled', 'disabled')
+        this.domNode.querySelectorAll<HTMLInputElement>('input').forEach(input => {
+          input.setAttribute('disabled', 'disabled')
+        })
       } else {
-        this.element.removeAttr('disabled').find('input').removeAttr('disabled')
+        this.domNode.removeAttribute('disabled')
+        this.domNode.querySelectorAll<HTMLInputElement>('input').forEach(input => {
+          input.removeAttribute('disabled')
+        })
       }
     }
   }

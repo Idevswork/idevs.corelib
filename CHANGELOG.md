@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.0.91 (2024-01-27)
+
+### Updates
+
+- Update Serenity to version 8.2.2
+- Update editor and formatter related to the changes from Serenity
+
 ## 0.0.90 (2024-01-13)
 
 ### Updates

@@ -8,19 +8,17 @@ export type Formatter = {
 
 @Decorators.registerFormatter('Idevs.ZeroDisplayFormatter')
 export class ZeroDisplayFormatter implements Formatter {
-  constructor() {
-    this.displayText = ''
+  constructor(public readonly props: { displayText?: string } = {}) {
+    this.props ??= {}
+    this.props.displayText ??= ''
   }
-
-  @Decorators.option()
-  public displayText: string
 
   format(ctx: FormatterContext): string {
     const src = ctx.value as string
 
     const value = parseFloat(String(src || '0').replace(',', ''))
     if (value == 0) {
-      return htmlEncode(this.displayText)
+      return htmlEncode(this.props.displayText)
     }
 
     return htmlEncode(src)
@@ -29,35 +27,28 @@ export class ZeroDisplayFormatter implements Formatter {
 
 @Decorators.registerFormatter('Idevs.CheckboxFormatter')
 export class CheckboxFormatter implements Formatter {
-  constructor() {
-    this.cssClass = 'text-center fs-2 text-gray-1'
-    this.trueText = '1'
-    this.falseText = '0'
-    this.trueValueIcon = 'mdi mdi-checkbox-marked-outline'
-    this.falseValueIcon = 'mdi mdi-checkbox-blank-outline'
+  constructor(
+    public readonly props: {
+      trueText?: string
+      falseText?: string
+      cssClass?: string
+      trueValueIcon?: string
+      falseValueIcon?: string
+    },
+  ) {
+    this.props.cssClass ??= 'text-center fs-2 text-gray-1'
+    this.props.trueText ??= '1'
+    this.props.falseText ??= '0'
+    this.props.trueValueIcon ??= 'mdi mdi-checkbox-marked-outline'
+    this.props.falseValueIcon ??= 'mdi mdi-checkbox-blank-outline'
   }
-
-  @Decorators.option()
-  public trueText: string
-
-  @Decorators.option()
-  public falseText: string
-
-  @Decorators.option()
-  public cssClass: string
-
-  @Decorators.option()
-  public trueValueIcon: string
-
-  @Decorators.option()
-  public falseValueIcon: string
 
   format(ctx: FormatterContext): string {
     const src = ctx.value as string
-    if (src == this.trueText) {
-      return `<i class="${this.trueValueIcon} ${this.cssClass}"></i>`
-    } else if (src == this.falseText) {
-      return `<i class="${this.falseValueIcon} ${this.cssClass}"></i>`
+    if (src == this.props.trueText) {
+      return `<i class="${this.props.trueValueIcon} ${this.props.cssClass}"></i>`
+    } else if (src == this.props.falseText) {
+      return `<i class="${this.props.falseValueIcon} ${this.props.cssClass}"></i>`
     } else {
       return htmlEncode(src)
     }
