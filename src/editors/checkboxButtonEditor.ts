@@ -13,7 +13,6 @@ import {
   IReadOnly,
   getCustomAttributes,
   getLookup,
-  isArray,
   isEmptyOrNull,
   toId,
   tryGetText,
@@ -148,7 +147,7 @@ export class CheckboxButtonEditor<P extends CheckboxButtonEditorOptions = Checkb
       values.forEach(v => {
         const checks = Array.from(inputs).filter(input => (input as HTMLInputElement).value === v)
         if (checks.length > 0) {
-          (checks[0] as HTMLInputElement).checked = true
+          ;(checks[0] as HTMLInputElement).checked = true
         }
       })
     }

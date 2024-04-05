@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.0.93 (2024-04-05)
+
+### Fixes
+
+- Change target environment to ES2020
+
+## 0.0.92 (2024-04-05)
+
+### Updates
+
+- Update library
+- Remove unused declaration
+
 ## 0.0.91 (2024-01-27)
 
 ### Updates
