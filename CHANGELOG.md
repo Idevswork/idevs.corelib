@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.0.94 (2024-08-16)
+
+### Updates
+
+  - Update Serenity to version 8.6.2 and also update all library
+  - Update formatter
+
 ## 0.0.93 (2024-04-05)
 
 ### Fixes
