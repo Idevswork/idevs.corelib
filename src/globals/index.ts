@@ -54,7 +54,6 @@ Number.prototype.toTimeString = function (): string {
 Number.prototype.toDecimal = function (precision?: number): string {
   const numb = precision || 0
   const options = {
-    style: 'decimal',
     minimumFractionDigits: numb,
     maximumFractionDigits: numb,
   }
