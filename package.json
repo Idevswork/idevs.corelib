@@ -1,6 +1,6 @@
 {
   "name": "@idevs/corelib",
-  "version": "0.0.94",
+  "version": "0.0.95",
   "description": "Extended library for Serenity Framework",
   "main": "src/index.js",
   "scripts": {
@@ -40,11 +40,14 @@
   },
   "devDependencies": {
     "@serenity-is/tsbuild": "^8.6.0",
+    "@types/jspdf": "^2.0.0",
     "@typescript-eslint/eslint-plugin": "^5.62.0",
     "@typescript-eslint/parser": "^5.62.0",
     "bootstrap": "^5.3.3",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^8.10.0",
+    "html2pdf.js": "^0.10.2",
+    "jspdf": "^2.5.1",
     "prettier": "^2.8.8",
     "typescript": "^5.5.4"
   }
