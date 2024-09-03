@@ -1,4 +1,4 @@
-import { DataGrid, ListRequest, ToolButton } from '@serenity-is/corelib'
+import { DataGrid, ListRequest, ServiceResponse, ToolButton } from '@serenity-is/corelib'
 import { isEmptyOrNull } from '@serenity-is/corelib'
 
 declare global {
@@ -344,6 +344,10 @@ export type ExportOptions = IdevsExportOptions & {
   exportType: 'PDF' | 'XLSX'
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onClick?: (e: any) => void
+}
+
+export type IdevsContentResponse = ServiceResponse & {
+  Content: string
 }
 
 export function createExportToolButton(options: ExportOptions): ToolButton {

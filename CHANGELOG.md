@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.0.96 (2024-09-03)
+
+### Add
+
+- Add IdevsContentResponse
+
+## 0.0.95 (2024-09-03)
+
+### Add
+
+- Add generatePdf function based on jspdf and html2pdf.js
+
 ## 0.0.94 (2024-08-16)
 
 ### Updates
