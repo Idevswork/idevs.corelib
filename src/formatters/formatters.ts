@@ -133,6 +133,7 @@ export class LookupFormatter implements Formatter {
     return LookupFormatter.format(ctx.value, this.lookupKey)
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   static format(src: any, lookupKey?: string): string {
     if (!src) return ''
 
@@ -145,14 +146,17 @@ export class LookupFormatter implements Formatter {
     const textField = lookup.textField
     const idList = src.toString().split(',')
 
-    return idList
-      .map((x: any) => {
-        const g = items.find(i => i[idField] == x)
-        if (!g) return x
+    return (
+      idList
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        .map((x: any) => {
+          const g = items.find(i => i[idField] == x)
+          if (!g) return x
 
-        return htmlEncode(g[textField])
-      })
-      .join(', ')
+          return htmlEncode(g[textField])
+        })
+        .join(', ')
+    )
   }
 }
 

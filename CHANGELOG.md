@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.0.97 (2024-09-08)
+
+### Add
+
+- Add makePdf function based on html-to-pdfmake and pdfmake
+
 ## 0.0.96 (2024-09-03)
 
 ### Add
