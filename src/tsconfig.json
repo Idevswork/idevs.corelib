@@ -1,29 +1,57 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "experimentalDecorators": true,
-    "declaration": true,
-    "declarationDir": "../dist",
-    "emitBOM": true,
-    "emitDeclarationOnly": false,
-    "esModuleInterop": true,
-    "inlineSources": true,
-    "isolatedModules": true,
-    "forceConsistentCasingInFileNames": true,
-    "noImplicitAny": true,
-    "sourceMap": true,
-    "module": "ESNext",
-    "moduleResolution": "Node",
-    "skipLibCheck": true,
-    "types": ["jquery", "jquery.validation", "jqueryui", "toastr"],
+    // Output configuration
     "outDir": "../dist",
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "removeComments": false,
+    "emitBOM": false,
+
+    // Module system
+    "module": "CommonJS",
+    "moduleResolution": "Node",
     "target": "ES2020",
-    "lib": ["ES6", "ES2020", "DOM"],
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+
+    // Strict type checking (gradually enabled)
+    "strict": false,
+    "noImplicitAny": false,
+    "strictNullChecks": false,
+    "strictFunctionTypes": false,
+    "strictBindCallApply": false,
+    "strictPropertyInitialization": false,
+    "noImplicitReturns": false,
+    "noImplicitThis": false,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": false,
+
+    // Module resolution
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "allowImportingTsExtensions": false,
+
+    // Emit
+    "noEmit": false,
     "noEmitHelpers": false,
     "importHelpers": false,
-    "jsx": "react-jsx",
+    "downlevelIteration": false,
+
+    // Other options
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "allowUnusedLabels": false,
+    "allowUnreachableCode": false,
+
+    // Type definitions
+    "types": ["jquery", "jquery.validation", "jqueryui", "toastr"],
     "typeRoots": ["../node_modules/@types"]
   },
-  "include": ["**/*"],
-  "exclude": ["**/*.spec.ts"]
+  "include": ["**/*.ts", "**/*.tsx"],
+  "exclude": ["**/*.spec.ts", "**/*.test.ts", "../node_modules", "../dist"]
 }

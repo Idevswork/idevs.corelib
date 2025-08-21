@@ -1,125 +1,78 @@
-import { DataGrid, ListRequest, ServiceResponse, ToolButton } from '@serenity-is/corelib'
-import { isEmptyOrNull } from '@serenity-is/corelib'
+import type { ModalOptions, ModalEvent } from '../types/common'
+import {
+  toTimeString,
+  toDecimalString,
+  RoundingMethod,
+  roundByMethod,
+  stringToNumber,
+  truncateString,
+  dateToNumber,
+} from '../utils/format'
+import { toSqlDateString as utilsToSqlDateString } from '../utils/date'
+import {
+  isEmptyOrNull,
+  DataGrid,
+  ListRequest,
+  ServiceResponse,
+  ToolButton,
+} from '@serenity-is/corelib'
+
+/**
+ * Global prototype extensions for built-in JavaScript types
+ * These add methods to Number, String, and Date prototypes for backward compatibility
+ * @deprecated Consider using the utility functions from utils/format and utils/date instead
+ */
 
 declare global {
-  // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
   interface Number {
     toDecimal(precision?: number): string
     toTimeString(): string
   }
 
-  // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
   interface String {
     truncate(maxLength?: number): string
     toNumber(): number
-    toMethodRound(method?: number): number
+    toMethodRound(method?: RoundingMethod): number
   }
 
-  // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
   interface Date {
     toSqlDate(): string
     toNumber(): number
   }
 
-  type IModalOptions = {
-    events?: IEvent[]
-  }
-
-  type IEvent = {
-    event: string
-    callback: (e: Event) => Promise<unknown>
-  }
+  type IModalOptions = ModalOptions
+  type IEvent = ModalEvent
 }
 
+// Date prototype extensions
 Date.prototype.toSqlDate = function (): string {
-  const date = this.valueOf()
-  return new Date(date.getTime() - date.getTimezoneOffset() * 60000).toISOString()
+  return utilsToSqlDateString(this)
 }
 
 Date.prototype.toNumber = function (): number {
-  const date = this.valueOf()
-  const hours = date.getHours()
-  const minutes = date.getMinutes()
-  const seconds = date.getSeconds()
-  return hours * 60 + minutes + seconds / 60
+  return dateToNumber(this)
 }
 
+// Number prototype extensions
 Number.prototype.toTimeString = function (): string {
-  const value = this.valueOf()
-  const hours = `0${Math.floor(value / 60)}`.slice(-2)
-  const minutes = `0${value % 60}`.slice(-2)
-  return `${hours}:${minutes}`
+  return toTimeString(this.valueOf())
 }
 
 Number.prototype.toDecimal = function (precision?: number): string {
-  const numb = precision || 0
-  const options = {
-    minimumFractionDigits: numb,
-    maximumFractionDigits: numb,
-  }
-  let value = Intl.NumberFormat('en-US', options).format(this.valueOf())
-  value = parseFloat(value.replace(/,/g, '')).toString()
-  return Intl.NumberFormat('en-US', options).format(parseFloat(value))
+  return toDecimalString(this.valueOf(), precision)
 }
 
-String.prototype.truncate = function (maxLength: number) {
-  const str = String(this)
-  return str.length > maxLength ? str.substring(0, maxLength - 1) + '&hellip;' : str
+// String prototype extensions
+String.prototype.truncate = function (maxLength = 0): string {
+  return truncateString(this.valueOf(), maxLength)
 }
 
-String.prototype.toNumber = function () {
-  return this.valueOf() ? parseFloat(this.valueOf().replace(/,/g, '')) : 0
+String.prototype.toNumber = function (): number {
+  return stringToNumber(this.valueOf())
 }
 
-String.prototype.toMethodRound = function (method: number): number {
-  const input = parseFloat(this.valueOf())
-  let value = isNaN(input) ? 0 : input
-  if (value == 0) return 0
-
-  const r = parseFloat(value.toFixed(2))
-  switch (method) {
-    case 1:
-      value = r - (parseFloat(((r % 1) * 100).toFixed(2)) % 25) / 100
-      break
-
-    case 2:
-      value = r - (parseFloat(((r % 1) * 100).toFixed(2)) % 50) / 100
-      break
-
-    case 3:
-      value = Math.floor(r)
-      break
-
-    case 4:
-      value = Math.floor(r) + (Math.floor((r % 1) * 100) + (25 - (Math.floor((r % 1) * 100) % 25))) / 100
-      break
-
-    case 5:
-      value = Math.floor(r) + (Math.floor((r % 1) * 100) + (50 - (Math.floor((r % 1) * 100) % 50))) / 100
-      break
-
-    case 6:
-      value = Math.ceil(r)
-      break
-
-    case 7:
-      value = Math.floor(r) + (parseFloat((parseFloat(((r % 1) * 100).toString()) / 25).toFixed(0)) * 25) / 100
-      break
-
-    case 8:
-      value = Math.floor(r) + (parseFloat((parseFloat(((r % 1) * 100).toString()) / 50).toFixed(0)) * 50) / 100
-      break
-
-    case 9:
-      value = parseFloat(r.toFixed(0))
-      break
-
-    default:
-      value = r
-      break
-  }
-
-  return value
+String.prototype.toMethodRound = function (method = RoundingMethod.None): number {
+  return roundByMethod(this.valueOf(), method)
 }
 
 export function ToTimeString(value: number): string {
@@ -213,23 +166,6 @@ export function toDateString(date: Date): string {
   return date.toLocaleString('en-GB', dateStringOption())
 }
 
-// export function GetModal(name: string, options?: IModalOptions): Modal {
-//   const el = document.querySelector(name) as HTMLElement
-//   if (options?.events?.length) {
-//     options.events.forEach(callback => {
-//       el.addEventListener(
-//         callback.event,
-//         (e: Event) => {
-//           callback.callback(e)
-//         },
-//         { once: true },
-//       )
-//     })
-//   }
-
-//   return Modal.getOrCreateInstance(el, { backdrop: 'static' })
-// }
-
 export const setCookie = (name: string, value: string, expires?: number): void => {
   let cookie = `${name}=${value}`
   if (expires) {
@@ -273,7 +209,11 @@ export function addDateProxyInput(opt: dateProxyInputOption): HTMLInputElement {
   return cloneInput
 }
 
-export function updateDateProxyValue(name: string, dateValue: string | Date | null, locale?: string): void {
+export function updateDateProxyValue(
+  name: string,
+  dateValue: string | Date | null,
+  locale?: string
+): void {
   let target = document.querySelector(`#${name}-2`) as HTMLInputElement
   if (!target) {
     target = document.querySelector(`input[name=${name}-2]`) as HTMLInputElement
@@ -286,7 +226,7 @@ export function updateDateProxyValue(name: string, dateValue: string | Date | nu
     }
     target.value = (dateValue.constructor == Date ? dateValue : new Date(dateValue)).toLocaleString(
       locale,
-      dateStringOption(),
+      dateStringOption()
     )
   }
 }
@@ -329,6 +269,8 @@ export type IdevsExportRequest = ListRequest & {
   pageSize?: PageSize
   margin?: PageMargin
   entity?: unknown
+  render?: boolean
+  openPrintDialog?: boolean
 }
 
 export type IdevsExportOptions = IdevsExportRequest & {
@@ -348,6 +290,8 @@ export type ExportOptions = IdevsExportOptions & {
 
 export type IdevsContentResponse = ServiceResponse & {
   Content: string
+  ContentType: string
+  FileName?: string
 }
 
 export function createExportToolButton(options: ExportOptions): ToolButton {

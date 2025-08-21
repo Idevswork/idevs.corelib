@@ -1,5 +1,133 @@
 # Changelog
 
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [1.0.0] - 2024-08-16
+
+> **BREAKING CHANGES**: This is a major refactoring release with breaking changes. See migration guide below.
+
+### 📦 Dependencies Updated - 2024-08-16
+
+#### Major Updates
+
+- **ESLint**: Updated from v8.57.0 to v9.33.0 with new flat config format
+- **jsPDF**: Updated from v2.5.1 to v3.0.1 (major version update)
+- **Prettier**: Updated from v2.8.8 to v3.6.2 (major version update)
+- **TypeScript**: Updated from v5.5.4 to v5.9.2
+
+#### Updated Dependencies
+
+- `@serenity-is/corelib`: 8.6.2 → 8.8.6
+- `@serenity-is/sleekgrid`: 1.9.0 → 1.9.6
+- `@serenity-is/tsbuild`: 8.6.0 → 8.8.7
+- `@types/jquery`: 3.5.29 → 3.5.32
+- `@types/jquery.validation`: 1.16.10 → 1.17.0
+- `@types/jqueryui`: 1.12.22 → 1.12.24
+- `@types/pdfmake`: 0.2.9 → 0.2.11
+- `@typescript-eslint/eslint-plugin`: 5.62.0 → 8.39.1
+- `@typescript-eslint/parser`: 5.62.0 → 8.39.1
+- `@typescript-eslint/typescript-estree`: 8.1.0 → 8.39.1
+- `bootstrap`: 5.3.3 → 5.3.7
+- `eslint-config-prettier`: 8.10.0 → 10.1.8
+- `html-to-pdfmake`: 2.5.13 → 2.5.30
+- `html2pdf.js`: 0.10.2 → 0.10.3
+- `pdfmake`: 0.2.12 → 0.2.20
+
+#### Configuration Changes
+
+- **Migrated to ESLint v9 flat configuration format**
+- Created new `eslint.config.js` replacing `.eslintrc`
+- Updated all npm scripts to work with new ESLint
+- Fixed security vulnerability in `brace-expansion` dependency
+
+#### Benefits
+
+- Latest security fixes and performance improvements
+- Enhanced TypeScript support with newer versions
+- Better linting with updated ESLint rules
+- Improved PDF generation with jsPDF v3
+
+### 🔄 Major Refactoring
+
+#### Added
+
+- **New modular structure** with separate utility modules:
+  - `utils/date` - Date manipulation utilities
+  - `utils/dom` - DOM manipulation utilities
+  - `utils/format` - String and number formatting utilities
+  - `types/common` - Common type definitions
+  - `types/export` - Export-related types and functions
+- **Modern build configuration**:
+  - Updated package.json with proper exports field
+  - Modern TypeScript configuration with strict mode
+  - Enhanced ESLint rules with type checking
+  - Updated Prettier configuration
+- **Improved documentation**:
+  - Comprehensive README with API examples
+  - Migration guide for breaking changes
+  - TypeScript configuration examples
+
+#### Changed
+
+- **Package structure**:
+  - Main entry point now points to `dist/index.js` instead of `src/index.js`
+  - Added proper TypeScript declaration files output
+  - Moved type definitions to devDependencies where appropriate
+- **Code organization**:
+  - Separated concerns with dedicated utility modules
+  - Improved type safety with strict TypeScript settings
+  - Better naming conventions (camelCase functions)
+  - Enhanced error handling and null checks
+- **Build system**:
+  - Updated build scripts for modern workflow
+  - Added development scripts (watch, typecheck, etc.)
+  - Improved dependency management
+
+#### Deprecated
+
+- **Prototype extensions**: While still functional, users are encouraged to use utility functions directly:
+  - `String.prototype.truncate` → `truncateString()`
+  - `Number.prototype.toTimeString` → `toTimeString()`
+  - `Date.prototype.toSqlDate` → `toSqlDateString()`
+  - And more...
+
+#### Fixed
+
+- **Type safety issues**: Resolved TypeScript strict mode violations
+- **Import/export consistency**: Standardized module exports
+- **Code quality**: Fixed ESLint violations and improved code style
+- **Build issues**: Resolved package.json configuration problems
+
+### 📦 Technical Improvements
+
+- **Dependencies**: Updated and reorganized dependencies
+- **TypeScript**: Enabled strict mode and modern compiler options
+- **ESLint**: Added comprehensive rules with type checking
+- **Prettier**: Updated formatting configuration
+- **Documentation**: Added comprehensive API documentation and examples
+
+### 🔧 Developer Experience
+
+- **Better IDE support**: Improved TypeScript definitions and imports
+- **Enhanced debugging**: Better source maps and declaration maps
+- **Modern tooling**: Updated build tools and configurations
+- **Clear structure**: Organized code into logical modules
+
+---
+
+## Previous versions
+
+_For versions prior to this refactoring, please refer to the git commit history._
+
+# Changelog
+
+## 0.1.0 (2025-07-)
+
+### Updates
+
 ## 0.0.97 (2024-09-08)
 
 ### Add
@@ -22,8 +150,8 @@
 
 ### Updates
 
-  - Update Serenity to version 8.6.2 and also update all library
-  - Update formatter
+- Update Serenity to version 8.6.2 and also update all library
+- Update formatter
 
 ## 0.0.93 (2024-04-05)
 
@@ -595,7 +723,6 @@ Update package with usable version.
 ### Added
 
 - TypeScripts
-
   - ToolDropdownButton
   - CheckboxFormatter
   - ZeroToBlankFormatter

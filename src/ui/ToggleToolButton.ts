@@ -36,9 +36,15 @@ export class ToggleToolButton {
 
       if (this.options.cssClass && this.options.altCssClass) {
         if (target.className.includes(this.options.cssClass)) {
-          target.className = target.className.replace(this.options.cssClass, this.options.altCssClass)
+          target.className = target.className.replace(
+            this.options.cssClass,
+            this.options.altCssClass
+          )
         } else {
-          target.className = target.className.replace(this.options.altCssClass, this.options.cssClass)
+          target.className = target.className.replace(
+            this.options.altCssClass,
+            this.options.cssClass
+          )
         }
       }
 

@@ -4,7 +4,6 @@
 
 import {
   Decorators,
-  EditorProps,
   EditorWidget,
   Enum,
   EnumKeyAttribute,
@@ -17,6 +16,7 @@ import {
   toId,
   tryGetText,
 } from '@serenity-is/corelib'
+import type { EditorProps } from '@serenity-is/corelib'
 
 export type CheckboxButtonEditorOptions = {
   enumKey?: string
@@ -26,7 +26,9 @@ export type CheckboxButtonEditorOptions = {
 }
 
 @Decorators.registerEditor('CheckboxButtonEditor')
-export class CheckboxButtonEditor<P extends CheckboxButtonEditorOptions = CheckboxButtonEditorOptions>
+export class CheckboxButtonEditor<
+    P extends CheckboxButtonEditorOptions = CheckboxButtonEditorOptions,
+  >
   extends EditorWidget<P>
   implements IReadOnly
 {
@@ -43,7 +45,11 @@ export class CheckboxButtonEditor<P extends CheckboxButtonEditorOptions = Checkb
   constructor(props: EditorProps<P>) {
     super(props)
 
-    if (isEmptyOrNull(this.options.enumKey) && this.options.enumType == null && isEmptyOrNull(this.options.lookupKey)) {
+    if (
+      isEmptyOrNull(this.options.enumKey) &&
+      this.options.enumType == null &&
+      isEmptyOrNull(this.options.lookupKey)
+    ) {
       return
     }
 

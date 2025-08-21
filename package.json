@@ -1,13 +1,30 @@
 {
   "name": "@idevs/corelib",
-  "version": "0.0.97",
-  "description": "Extended library for Serenity Framework",
-  "main": "src/index.js",
+  "version": "1.0.0",
+  "description": "Extended library components and utilities for Serenity Framework",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
   "scripts": {
+    "build": "tsc && npm run build:css",
+    "build:css": "cp -r css dist/",
+    "build:watch": "tsc --watch",
+    "clean": "rm -rf dist",
+    "dev": "npm run build:watch",
+    "format": "prettier --write \"src/**/*.{ts,js,json}\" \"*.{md,json}\"",
+    "format:check": "prettier --check \"src/**/*.{ts,js,json}\" \"*.{md,json}\"",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
+    "prepublishOnly": "npm run clean && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc -p ./src/tsconfig.json",
-    "format": "prettier --ignore-path .gitignore --write \"src/**/*.+(js|ts|json)\" \"dist/**/*.+(js|ts|json)\"",
-    "lint": "eslint --ignore-path .eslintignore -c .eslintrc --ext .js,.ts ./src"
+    "typecheck": "tsc --noEmit"
   },
   "keywords": [
     "idevs",
@@ -18,9 +35,10 @@
   "author": "Sarawut Phaekuntod",
   "license": "MIT",
   "files": [
-    "./dist/**/*",
-    "./src/**/*",
-    "./css/**/*"
+    "dist/**/*",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
   ],
   "publishConfig": {
     "access": "public"
@@ -30,29 +48,30 @@
     "url": "git+https://github.com/klomkling/idevs.corelib"
   },
   "dependencies": {
-    "@serenity-is/corelib": "^8.6.2",
-    "@serenity-is/sleekgrid": "^1.9.0",
-    "@types/jquery": "^3.5.29",
-    "@types/jquery.validation": "^1.16.10",
-    "@types/jqueryui": "^1.12.22",
-    "@types/toastr": "^2.1.43",
-    "@typescript-eslint/typescript-estree": "^8.1.0",
-    "html-to-pdfmake": "^2.5.13",
-    "pdfmake": "^0.2.12",
-    "html2pdf.js": "^0.10.2",
-    "jspdf": "^2.5.1"
+    "@serenity-is/corelib": "^8.8.6",
+    "@serenity-is/sleekgrid": "^1.9.6",
+    "html-to-pdfmake": "^2.5.30",
+    "pdfmake": "^0.2.20",
+    "html2pdf.js": "^0.10.3",
+    "jspdf": "^3.0.1"
   },
   "devDependencies": {
-    "@serenity-is/tsbuild": "^8.6.0",
+    "@eslint/js": "^9.33.0",
+    "@serenity-is/tsbuild": "^8.8.7",
     "@types/html-to-pdfmake": "^2.4.4",
+    "@types/jquery": "^3.5.32",
+    "@types/jquery.validation": "^1.17.0",
+    "@types/jqueryui": "^1.12.24",
     "@types/jspdf": "^2.0.0",
-    "@types/pdfmake": "^0.2.9",
-    "@typescript-eslint/eslint-plugin": "^5.62.0",
-    "@typescript-eslint/parser": "^5.62.0",
-    "bootstrap": "^5.3.3",
-    "eslint": "^8.57.0",
-    "eslint-config-prettier": "^8.10.0",
-    "prettier": "^2.8.8",
-    "typescript": "^5.5.4"
+    "@types/pdfmake": "^0.2.11",
+    "@types/toastr": "^2.1.43",
+    "@typescript-eslint/eslint-plugin": "^8.39.1",
+    "@typescript-eslint/parser": "^8.39.1",
+    "@typescript-eslint/typescript-estree": "^8.39.1",
+    "bootstrap": "^5.3.7",
+    "eslint": "^9.33.0",
+    "eslint-config-prettier": "^10.1.8",
+    "prettier": "^3.6.2",
+    "typescript": "^5.9.2"
   }
 }

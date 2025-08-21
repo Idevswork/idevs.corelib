@@ -43,7 +43,7 @@ export class CheckboxFormatter implements Formatter {
       cssClass?: string
       trueValueIcon?: string
       falseValueIcon?: string
-    },
+    }
   ) {
     this.props.cssClass ??= 'text-center fs-2 text-gray-1'
     this.props.trueText ??= '1'
@@ -94,7 +94,7 @@ export class CheckboxFormatter implements Formatter {
       this.trueText,
       this.falseText,
       this.trueValueIcon,
-      this.falseValueIcon,
+      this.falseValueIcon
     )
   }
 
@@ -104,7 +104,7 @@ export class CheckboxFormatter implements Formatter {
     trueText?: string,
     falseText?: string,
     trueValueIcon?: string,
-    falseValueIcon?: string,
+    falseValueIcon?: string
   ): string {
     if (src == trueText) {
       return `<i class="${trueValueIcon} ${cssClass}"></i>`

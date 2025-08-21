@@ -38,7 +38,11 @@ export class DropdownToolButton {
   private itemDisablingState: { key: string; disabled: boolean }[] = []
   private options: DropdownToolButtonOptions
 
-  public constructor(container: JQuery, buttons: DropdownToolButtonItem[], opt?: DropdownToolButtonOptions) {
+  public constructor(
+    container: JQuery,
+    buttons: DropdownToolButtonItem[],
+    opt?: DropdownToolButtonOptions
+  ) {
     this.options = opt || {}
     this.isDisabled = this.options.disabled || false
     this.element = this.buildBaseDropdown()
@@ -76,9 +80,11 @@ export class DropdownToolButton {
 
   private buildBaseDropdown(): JQuery {
     const dropdownTemplate = `<div class="buttons-inner dropdown" style="overflow: visible">
-    <div class="idevs-tool-dropdown-button tool-button icon-tool-button ${this.options.cssClass ?? ''} ${
-      this.options.isDropUp ? 'dropup' : ''
-    } ${this.isDisabled ? 'disabled' : ''}" style="cursor: unset;">
+    <div class="idevs-tool-dropdown-button tool-button icon-tool-button ${
+      this.options.cssClass ?? ''
+    } ${this.options.isDropUp ? 'dropup' : ''} ${
+      this.isDisabled ? 'disabled' : ''
+    }" style="cursor: unset;">
         <div class="button-outer dropdown-toggle ${this.isDisabled ? 'disabled' : ''}"
         data-bs-toggle="dropdown"
         style="cursor: pointer;">
@@ -88,7 +94,9 @@ export class DropdownToolButton {
             </span>
             <i class="caret"></i>
         </div>
-        <ul class="dropdown-menu ${this.options.dropdownMenuPosition == 'right' ? 'dropdown-menu-right' : ''}"></ul>
+        <ul class="dropdown-menu ${
+          this.options.dropdownMenuPosition == 'right' ? 'dropdown-menu-right' : ''
+        }"></ul>
     </div>
 </div>`
 
@@ -116,7 +124,9 @@ export class DropdownToolButton {
     let dropdownItemElement: JQuery
 
     if (button.isDropdownHeader && !isEmptyOrNull(button.dropdownHeaderTitle)) {
-      dropdownItemElement = $(`<li class="dropdown-header ${button.cssClass ?? ''}">${button.dropdownHeaderTitle}</li>`)
+      dropdownItemElement = $(
+        `<li class="dropdown-header ${button.cssClass ?? ''}">${button.dropdownHeaderTitle}</li>`
+      )
     } else {
       if (button.isSeparator) {
         dropdownItemElement = $(`<li class="dropdown-divider"></li>`)
@@ -254,9 +264,9 @@ export class DropdownToolButton {
       this.setDisablingStateItem(button.key, button.disabled || false)
     }
 
-    const sideButtonTemplate = `<div class="tool-button add-button icon-tool-button ${button.cssClass ?? ''} ${
-      button.disabled ? 'disabled' : ''
-    }"
+    const sideButtonTemplate = `<div class="tool-button add-button icon-tool-button ${
+      button.cssClass ?? ''
+    } ${button.disabled ? 'disabled' : ''}"
         data-idevs-key="${button.key ?? ''}"
         title="${button.title ?? ''}">
             <div class="button-outer">

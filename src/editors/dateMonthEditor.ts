@@ -1,7 +1,10 @@
-import { Decorators, EditorProps, SelectEditor, SelectEditorOptions, indexOf } from '@serenity-is/corelib'
+import { Decorators, SelectEditor, SelectEditorOptions, indexOf } from '@serenity-is/corelib'
+import type { EditorProps } from '@serenity-is/corelib'
 
 @Decorators.registerEditor('DateMonthEditor')
-export class DateMonthEditor<P extends DateMonthEditorOptions = DateMonthEditorOptions> extends SelectEditor<P> {
+export class DateMonthEditor<
+  P extends DateMonthEditorOptions = DateMonthEditorOptions,
+> extends SelectEditor<P> {
   private months: string[]
 
   constructor(props: EditorProps<P>) {

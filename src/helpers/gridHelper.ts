@@ -27,7 +27,7 @@ export class GridHelper {
     for (const column of removeColumns) {
       columns.splice(
         indexOf(columns, c => c.field === column),
-        1,
+        1
       )
     }
 
@@ -35,7 +35,7 @@ export class GridHelper {
     if (id) {
       columns.splice(
         indexOf(columns, c => c.field === 'Id'),
-        1,
+        1
       )
     }
 
@@ -66,7 +66,9 @@ export class GridHelper {
   public setHeaderAlignment(...columns: IHeaderAlignment[]): void {
     for (let c = 0; c < columns.length; c++) {
       const column: IHeaderAlignment = columns[c]
-      const header = document.querySelector(`.slick-header-columns div[id$="${column.column}"] .slick-column-name`)
+      const header = document.querySelector(
+        `.slick-header-columns div[id$="${column.column}"] .slick-column-name`
+      )
       if (header) {
         header.classList.add('text-center')
       }
@@ -78,7 +80,10 @@ export class GridHelper {
    * @param grid
    * @param options
    */
-  public initGrid<TItem, TOptions>(grid: EntityGrid<TItem, TOptions>, options?: IInitGridOptions): void {
+  public initGrid<TItem, TOptions>(
+    grid: EntityGrid<TItem, TOptions>,
+    options?: IInitGridOptions
+  ): void {
     // Set auto column width
     if (options?.autoColumnWidth ?? true) {
       const g = grid.getGrid()

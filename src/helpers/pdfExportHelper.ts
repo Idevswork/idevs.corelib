@@ -1,5 +1,5 @@
-import { deepClone, postToService } from '@serenity-is/corelib'
-import { IdevsExportOptions, IdevsExportRequest } from '../globals'
+import { deepClone, postToService, serviceCall } from '@serenity-is/corelib'
+import { IdevsContentResponse, IdevsExportOptions, IdevsExportRequest } from '../globals'
 import html2pdf from 'html2pdf.js'
 import { jsPDF } from 'jspdf'
 import pdfMake from 'pdfmake/build/pdfmake'
@@ -31,7 +31,61 @@ export function doExportPdf(options: IdevsExportOptions): void {
   request.logo = options.logo
   request.entity = options.entity
 
-  postToService({ service: options.service, request: request, target: '_blank' })
+  if (options.render || false) {
+    serviceCall({
+      service: options.service,
+      request: request,
+    }).then((response: IdevsContentResponse) => {
+      const pdfContent = response.Content
+      const blob = base64ToBlob(pdfContent, response.ContentType)
+      const objectUrl = URL.createObjectURL(blob)
+
+      // Create modal elements
+      const modal = document.createElement('div')
+      modal.className = 'modal fade'
+      modal.tabIndex = -1
+      modal.style.zIndex = '1150'
+
+      modal.innerHTML = `
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-body p-0">
+                        <iframe style="width:100%; height:90vh; border: none;" frameborder="0"></iframe>
+                    </div>
+                </div>
+            </div>
+        `
+
+      const iframe = modal.querySelector('iframe')!
+      iframe.src = objectUrl
+
+      // Append to body
+      document.body.appendChild(modal)
+
+      // Show modal using jQuery Bootstrap
+      ;($(modal) as any).modal({
+        backdrop: 'static',
+        keyboard: true,
+      })
+
+      // Print when iframe is loaded
+      iframe.onload = () => {
+        iframe.contentWindow?.focus()
+        iframe.contentWindow?.print()
+      }
+
+      // Cleanup when modal is closed
+      ;($(modal) as any).on('hidden.bs.modal', () => {
+        URL.revokeObjectURL(objectUrl)
+        modal.remove()
+      })
+
+      // Show modal
+      ;($(modal) as any).modal('show')
+    })
+  } else {
+    postToService({ service: options.service, request: request, target: '_blank' })
+  }
 }
 
 export type generatePdfOption = {
@@ -124,7 +178,9 @@ export function makePdf(html: string, options?: PageOptions): Promise<string> {
             return ''
           }
 
-          const h = hd.replace('{{pageNo}}', currentPage.toString()).replace('{{totalPages}}', pageCount.toString())
+          const h = hd
+            .replace('{{pageNo}}', currentPage.toString())
+            .replace('{{totalPages}}', pageCount.toString())
           return JSON.parse(h)
         },
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -132,7 +188,9 @@ export function makePdf(html: string, options?: PageOptions): Promise<string> {
           if (!ft) {
             return ''
           }
-          const f = ft.replace('{{pageNo}}', currentPage.toString()).replace('{{totalPages}}', pageCount.toString())
+          const f = ft
+            .replace('{{pageNo}}', currentPage.toString())
+            .replace('{{totalPages}}', pageCount.toString())
           return JSON.parse(f)
         },
         pageSize: pageSize,
@@ -176,4 +234,15 @@ const removeEmptyTextNodes = (obj: any): any => {
   }
 
   return obj
+}
+
+// Helper function to convert base64 to blob
+function base64ToBlob(base64: string, contentType: string): Blob {
+  const byteCharacters = atob(base64)
+  const byteNumbers = new Array(byteCharacters.length)
+  for (let i = 0; i < byteCharacters.length; i++) {
+    byteNumbers[i] = byteCharacters.charCodeAt(i)
+  }
+  const byteArray = new Uint8Array(byteNumbers)
+  return new Blob([byteArray], { type: contentType })
 }

@@ -1,19 +1,20 @@
 import { StringEditor, ToolButton } from '@serenity-is/corelib'
+import type { DialogSize } from '../types/common'
 
 /**
+ * Remove Select2 clear buttons from specified targets
  * Use this function within updateInterface()
- * @param targets
- * @constructor
  */
-export function RemoveSelect2ClearButton(...targets: string[]): void {
-  for (let i = 0; i < targets.length; i++) {
-    $(`.${targets[i]} .select2-search-choice-close`)?.remove()
+export function removeSelect2ClearButton(...targets: string[]): void {
+  for (const target of targets) {
+    $(`.${target} .select2-search-choice-close`).remove()
   }
 }
 
 export function EmailValidator(value: string): string | null {
   // eslint-disable-next-line no-useless-escape
-  const filter = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/
+  const filter =
+    /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/
   return filter.test(value) ? null : 'Invalid email address'
 }
 
@@ -119,7 +120,7 @@ export class DialogHelper {
    * @param dialog
    * @param options
    */
-  public setDialogSize(dialog: object, options?: IDialogSize) {
+  public setDialogSize(dialog: object, options?: DialogSize) {
     let name = dialog.constructor.name
     name = `.s-${name}`
     const optionH = options?.height || 0
@@ -135,9 +136,4 @@ export class DialogHelper {
         at: 'center center',
       })
   }
-}
-
-export type IDialogSize = {
-  width?: number
-  height?: number
 }
